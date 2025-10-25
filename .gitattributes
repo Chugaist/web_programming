@@ -1,0 +1,2 @@
+Web/Front/static/assets/images/*.mp4 filter=lfs diff=lfs merge=lfs -text
+Web/Front/static/assets/images/*.webm filter=lfs diff=lfs merge=lfs -text

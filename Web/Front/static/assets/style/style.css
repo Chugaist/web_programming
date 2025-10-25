@@ -69,8 +69,10 @@ html, body {
     min-height: 100%;
     background: var(--dark-grey);
     background-repeat: no-repeat;
-    background-attachment: flex; /* щоб градієнт залишався на місці при скролі */
+    background-attachment: cover; /* щоб градієнт залишався на місці при скролі */
     background-size: cover;       /* щоб градієнт тягнувся на весь екран */
+
+    overflow-x: hidden;
 }
 
 /* ===============Header===========*/
@@ -137,6 +139,41 @@ header {
 
 
 /* ===============Main===========*/
+#bubble-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 120px); /* 120px = висота футера */
+    pointer-events: none;
+    overflow: hidden;  /* все, що виходить за висоту контейнера, обрізається */
+    z-index: 0;
+}
+
+
+
+.bubble {
+    position: absolute;
+    bottom: 0;
+    background: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px; /* базовий розмір, буде змінюватись через JS */
+    height: 20px;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
 /* ===============Title===========*/
 .title-content {
     position: relative;      /* секція контейнер */
@@ -209,7 +246,7 @@ header {
     color: var(--white);
 
     padding: 22px 75px;
-    background-color: var(--blue);
+    background-color: #1B1A2A;;
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -234,9 +271,12 @@ header {
 
 
 /* ===============About us=========== */
+.container {
+    position: relative; /* щоб можна було позиціювати внутрішні елементи відносно */
+}
 .about-content{
     display: flex;
-    align-items: center;
+    flex-direction: column;
 
 
 }
@@ -251,14 +291,19 @@ header {
     color: var(--white);
 
     white-space: nowrap;
-    text-align: center;
+    text-align: left;          /* змінили з center на left */
     width: 241px;
+    margin-top: 75px;          /* відступ зверху */
+    margin-left: 186px;        /* відступ зліва */
     margin-right: 33px;
-    margin-bottom: 270px;
+
 }
-.line{
-    margin-top: 114px;
+.line {
+    position: absolute;      /* абсолютне позиціювання відносно container */
+    top: 40px;              /* відступ зверху від container */
+    left: -20px;             /* відступ зліва */
 }
+
 .about-text{
     font-family: var(--font-body);
     font-weight: var(--font-body-weight);
@@ -268,33 +313,33 @@ header {
     line-height: var(--font-body-line-height);
     color: var(--white);
 
-    width: 525px;
-    height: 400px;
-    flex-shrink: 0;
+    display: flex;
+    justify-content: center;    /* центр блоку текстів */
+    gap: 40px;                  /* відстань між лівим і правим текстом */
 
-    margin-left: 33px;
-    margin-top: 157px;
-    margin-bottom: 150px;
+}
+.about-text p:first-child {
+    width: 48%;                 /* перша половина тексту */
+    text-align: center;
+    margin-top: 20px;
 }
 
+.about-text p:last-child {
+    width: 48%;                 /* друга половина тексту */
+    text-align: center;           /* якщо треба можна right */
+    margin-top: 100px;           /* трохи більший відступ зверху */
+}
 .about-photos{
 
-    flex-direction: column;
+    display: flex;
+    justify-content: center;  /* центр блоку по горизонталі */
+    gap: 20px;                /* відстань між фото */
+    margin-top: 30px;
+    border-radius: 54px;
 
 }
-.team1{
-    width: 461px;
-    height: 461px;
-    flex-shrink: 0;
 
-}
 
-.team2{
-    width: 450px;
-    height: 450px;
-    flex-shrink: 0;
-
-}
 /*===================Contact===================*/
 .contact-content{
     display: flex;

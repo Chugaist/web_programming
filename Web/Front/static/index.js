@@ -81,16 +81,52 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// Плавна прокрутка до верху
-function scrollToTop() {
-    const titleElement = document.getElementById("title");
-    if (titleElement) {
-        titleElement.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
+const container = document.getElementById('bubble-container');
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+
+    if (scrollTop > lastScrollTop) {
+        const bubbleCount = 1 + Math.floor(Math.random() * 0.5);
+
+        for (let i = 0; i < bubbleCount; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+
+            // випадкова горизонтальна позиція
+            bubble.style.left = Math.random() * container.offsetWidth + 'px';
+
+            // випадковий розмір
+            const size = 10 + Math.random() * 70; // 20–50px
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+
+            // додаємо фото
+            bubble.style.backgroundImage = "url('static/assets/images/bubble.png')";
+
+            // випадкова швидкість підйому
+            const duration = 3 + Math.random() * 4;
+            bubble.style.animationDuration = duration + 's';
+
+            // випадкова затримка
+            bubble.style.animationDelay = (Math.random() * 0.5) + 's';
+
+            container.appendChild(bubble);
+
+            bubble.addEventListener('animationend', () => {
+                bubble.remove();
+            });
+        }
     }
-}
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
+
+
+
+
 
 // Показ/приховування меню
 function toggleMenu() {

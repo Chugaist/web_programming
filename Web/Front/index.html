@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-  <title>Armor eye</title>
+  <title>BluePulse</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 
 <!--Header-->
 <header>
-  <div class="container">
+  <div class="nav-container">
 
     <div class="header-content">
       <div class="logo">
@@ -34,10 +34,10 @@
       </div>
         <div class="desktop-only">
         <nav>
-          <a href="#about">About</a>
-          <a href="#project">Project</a>
-          <a href="#results">Results</a>
-          <a href="#contact">Contact</a>
+          <a href="#about">Про нас</a>
+          <a href="#project">Виставки</a>
+          <a href="#results">Фото</a>
+          <a href="#contact">Конаткти</a>
         </nav>
       </div>
 
@@ -107,21 +107,28 @@
 <!--Main-->
 <main>
 
-    <div id="title" class="title-content">
-      <div class="container">
-        <div class="title">
-          <h1>Hi we are Messiah-<br>Squad team. <br>And here is our <br>product</h1>
-        </div>
+  <div id="title" class="title-content">
+    <!-- Відео фоном -->
+    <video class="title-bg" autoplay muted loop playsinline>
+      <source src="static/assets/images/background.webm" type="video/webm">
+      <source src="static/assets/images/background.mp4" type="video/mp4">
+    </video>
 
+    <div class="video-overlay"></div>
 
-          <div class="button">
-            <button class="learn-more-btn">
-              <span class="button-text">Learn more</span>
-            </button>
-          </div>
-
+    <!-- Контент поверх відео -->
+    <div class="container">
+      <div class="title">
+        <h1>Ласкаво просимо -<br>до Музею Медуз <br>— де океан оживає у світлі!</h1>
+      </div>
+      <div class="button">
+        <button class="learn-more-btn">
+          <span class="button-text">Дізнатись більше</span>
+        </button>
       </div>
     </div>
+  </div>
+
 
 
   <div id="about" class="about-us">
@@ -130,7 +137,7 @@
         <div class="about-content">
 
           <div class="title-p1">
-            <h2>About us</h2>
+            <h2>Про нас</h2>
           </div>
           <div class="line">
             <svg xmlns="http://www.w3.org/2000/svg" width="2" height="487" viewBox="0 0 2 487" fill="none">
@@ -138,7 +145,9 @@
             </svg>
           </div>
           <div class="about-text">
-            <p>We are team that develops solutions in the field of computer vision for ground drones. We design computer vision algorithms that enable drones to navigate in space, recognize objects, avoid obstacles, and perform autonomous tasks. Our mission is to make drones smarter and safer by integrating cutting-edge machine learning technologies.</p>
+            <p>Музей Медуз — це освітній та культурний простір, присвячений морському життю.
+              Ми об’єднуємо біологію, мистецтво та технології, щоб розповісти історію океану мовою краси.
+              Наша команда співпрацює з океанографами, художниками та дослідниками, щоб показати — навіть найкрихкіша істота може змінити світ.</p>
           </div>
           <div class="about-photos">
             <img src="static/assets/images/team1.png" alt="team1" class="team1">

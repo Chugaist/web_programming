@@ -2,8 +2,7 @@
     --white: #F5F5F5;
     --black: #2A2A2A;
     --grey:  #B5B5B5;
-    --dark-grey: #525252;
-    --orange: #A46141;
+    --dark-grey: linear-gradient(180deg, #3750F0 0%, #2A2C9A 22.12%, #8FCAFD 43.27%, #8EC085 64.42%, #E5F39F 81.73%, #F39F9F 91.83%);    --orange: #A46141;
     --blue: #51818B;
 
     body, html {
@@ -65,119 +64,131 @@
 
 
 html, body {
-    height: 100%; /* Забезпечуємо висоту 100% для html та body */
     margin: 0;
     padding: 0;
-    scroll-behavior: smooth;
-    background-color: var(--dark-grey);
-    overflow-x: hidden; /* Приховуємо горизонтальний скролл */
-}
-
-body {
-    min-height: 100%; /* Мінімальна висота для тіла */
-    overflow-y: auto; /* Дозволяємо вертикальне прокручування */
-}
-
-body{
-    margin-top: 67px;
-}
-
-
-*{
-    box-sizing: border-box;
-}
-.container{
-    max-width: 1440px;
-    margin: 0 180px;
+    min-height: 100%;
+    background: var(--dark-grey);
+    background-repeat: no-repeat;
+    background-attachment: flex; /* щоб градієнт залишався на місці при скролі */
+    background-size: cover;       /* щоб градієнт тягнувся на весь екран */
 }
 
 /* ===============Header===========*/
-header{
+/* Header */
+header {
     background-color: var(--black);
     height: 67px;
-    position: fixed; /* Закріплюємо header */
-    top: 0; /* Встановлюємо верхнє положення */
-    left: 0; /* Встановлюємо ліве положення */
-    width: 100%; /* Ширина на всю сторінку */
-    z-index: 10; /* Задаємо висший пріоритет для header */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
-.header-content{
+
+/* Основний контейнер навігації */
+.nav-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Контейнер логотип + навігація */
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Логотип зліва, меню справа */
+    align-items: center;
+    width: 100%;
+}
+
+/* Логотип */
+.logo img {
+    max-width: 100%; height: auto; display: block; /* Щоб уникнути зайвих відступів */ margin: 0 auto;
+}
+
+/* Десктопна навігація */
+.desktop-only nav {
+    display: flex;
     align-items: center;
 }
-.logo img{
-    max-width: 100%;
-    height: auto;
-    display: block; /* Щоб уникнути зайвих відступів */
-    margin: 0 auto;
-}
 
-nav {
-    position: sticky; /* додаємо sticky до навігації */
-    top: 0; /* залишити навігацію на верху */
-    z-index: 1000; /* щоб вона не зникала позаду інших елементів */
-}
-
-nav a{
+.desktop-only nav a {
     text-decoration: none;
-    margin-right: 25px;
+    margin-left: 25px; /* Відступи між лінками */
     color: var(--white);
     font-family: var(--font-tab);
-    font-optical-sizing: auto;
     font-weight: var(--font-tab-weight);
     font-size: var(--font-tab-size);
     letter-spacing: var(--font-tab-letter-spacing);
-    style: var(--font-tab-style);
+    font-style: var(--font-tab-style);
     line-height: var(--font-tab-line-height);
-
-    transition: color .4s ease;
+    transition: color 0.4s ease;
 }
 
-
-
-nav a:hover {
+.desktop-only nav a:hover,
+.desktop-only nav a.checked {
     color: var(--blue);
 }
 
-nav a.checked {
-    color: var(--blue); /* Колір для активного лінка */
-}
 
 
-nav a:last-child{
-    margin-right: 0;
-}
 
 
 /* ===============Main===========*/
 /* ===============Title===========*/
-.title-content{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-
-    background-image: url('../images/background.png');
-    background-size: cover; /* Масштабування фонового зображення */
-    background-position: center; /* Центрування фонового зображення */
-    background-repeat: no-repeat; /* Вимкнення повторення */
-
-
-    width: 100%; /* Займає всю ширину екрана */
-    min-height: 100vh; /* Висота на весь екран */
-    margin: 0; /* Відсутність зовнішніх відступів */
+.title-content {
+    position: relative;      /* секція контейнер */
+    width: 100%;
+    height: 100vh;           /* один екран висоти */
+    overflow: hidden;
 }
 
-.title{
+.title-bg {
+    position: absolute;      /* відео в бекграунді */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* масштабування як background-size: cover */
+    object-position: center;
+    z-index: 0;              /* відео за текстом */
+    pointer-events: none;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;    /* за твоїми параметрами */
+    height: 100%;    /* за твоїми параметрами */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.40) 17.21%, rgba(102, 102, 102, 0.40) 100%);
+    z-index: 1;
+    pointer-events: none; /* щоб не заважало клікам по кнопках */
+}
+
+.container {
+    position: relative;
+    z-index: 1;              /* контент поверх відео */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.title h1 {
+    color: var(--white);
     font-family: var(--font-h1);
     font-weight: var(--font-h1-weight);
     font-size: var(--font-h1-size);
-    font-style: var(--font-h1-style);
-    letter-spacing: var(--font-h1-letter-spacing);
     line-height: var(--font-h1-line-height);
-    color: var(--white);
-
+    margin: 0;
 }
 
 .button{
@@ -210,8 +221,11 @@ nav a:last-child{
 }
 
 .learn-more-btn:hover {
-    background-color: var(--black); /* Зміна кольору при наведенні */
+    background-color: var(--black);
 }
+
+
+
 
 
 

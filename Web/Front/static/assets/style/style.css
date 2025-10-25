@@ -299,9 +299,9 @@ header {
 
 }
 .line {
-    position: absolute;      /* абсолютне позиціювання відносно container */
-    top: 40px;              /* відступ зверху від container */
-    left: -20px;             /* відступ зліва */
+    position: absolute;
+    top: 150px; /* або інше значення, щоб лінія опинилась під текстом h2 */
+    left: -20px; /* те саме вирівнювання, що й заголовок */
 }
 
 .about-text{
@@ -343,8 +343,11 @@ header {
 /*===================Contact===================*/
 .contact-content{
     display: flex;
-    align-items: center;
+    justify-content: space-between; /* відсуває блоки вліво і вправо */
+    align-items: flex-start; /* вирівнює по верхньому краю */
     margin-bottom: 200px;
+    flex-wrap: wrap;
+    margin-top: 100px;
 
 
 }
@@ -364,14 +367,11 @@ header {
     margin-bottom: 270px;
 }
 
-.line{
-    margin-top: 114px;
-}
 
 .form-container {
-    flex: 2;
+    flex: 0 0 705px; /* фіксована ширина */
     padding-left: 20px;
-    margin-top: 150px;
+    margin-top: 50px; /* приберемо відступ, щоб форма вирівнялась з заголовком */
 }
 
 form {
@@ -398,7 +398,7 @@ input, textarea {
 
     font-family: var(--font-body);
     font-weight: var(--font-body-weight);
-    font-size: var(--font-body-size);
+    font-size: 20px;
     font-style: var(--font-body-style);
     letter-spacing: var(--font-body-letter-spacing);
     line-height: var(--font-body-line-height);
@@ -421,7 +421,7 @@ textarea {
 /* Кнопка */
 .submit {
     padding: 15px;
-    background-color: var(--orange);
+    background-color: #1B1A2A;
     border: none;
     border-radius: 30px;
     color: var(--white);
@@ -430,9 +430,8 @@ textarea {
     transition: background-color 0.3s;
 
 }
-
 .submit:hover {
-    background-color: #b47056;
+    background-color: #7CABB4;
 }
 
 .contact-info {
@@ -442,7 +441,24 @@ textarea {
     align-items: center;
     gap: 30px;
 }
+.contact-title {
+    flex: 1;
+    max-width: 400px; /* обмежує ширину тексту */
+    color: var(--white);
+}
+.title-p3 h2 {
+    margin: 0; /* прибирає стандартні відступи браузера */
+}
 
+.contact-title p {
+    font-family: var(--font-body);
+    font-size: var(--font-body-size);
+    line-height: var(--font-body-line-height);
+    margin-top: -130px;  /* ближче до заголовка */
+    margin-left: 0;    /* точно під заголовком */
+    max-width: 380px;
+    text-align: left;
+}
 .info-item {
     display: flex;
     align-items: center;

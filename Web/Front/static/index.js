@@ -309,6 +309,8 @@ window.onload = function () {
         }
     });
 
+
+
     // Ініціалізація
     showPhotoMobile(currentIndex);
 
@@ -316,6 +318,15 @@ window.onload = function () {
     setInterval(nextPhotoMobile, 10000);
 };
 
+document.addEventListener("DOMContentLoaded", function () {
+    const textarea = document.querySelector('textarea[name="message"]');
+    const counter = document.querySelector('.char-count');
+
+    textarea.addEventListener('input', function () {
+        const currentLength = textarea.value.length;
+        counter.textContent = `${currentLength}/300`;
+    });
+});
 
 
 

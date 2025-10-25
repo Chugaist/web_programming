@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Armor eye</title>
+</head>
+
+<body>
+
+<!--Header-->
+<header>
+    <div class="container">
+
+        <div class="header-content">
+
+            <a href="#title"><img src="assets/images/logo.png" alt="logo"></a>
+            <div class="desktop-only">
+                <nav>
+                    <a href="#about">About</a>
+                    <a href="#">Project</a>
+                    <a href="#">Results</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+            <div class="mobile-only" onclick="toggleMenu()">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="17" viewBox="0 0 32 17" fill="none">
+                    <line x1="0.5" y1="0.5" x2="31.5" y2="0.5" stroke="white" stroke-linecap="round"/>
+                    <line x1="0.5" y1="8.5" x2="31.5" y2="8.5" stroke="white" stroke-linecap="round"/>
+                    <line x1="0.5" y1="16.5" x2="31.5" y2="16.5" stroke="white" stroke-linecap="round"/>
+                </svg>
+
+                <div class="mobile-menu" id="mobileMenu">
+                    <!-- Кнопка закриття -->
+                    <div class="close-btn" id="closeBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                            <path d="M2.84208 0L0 2.84208L14.6579 17.5L0 32.1579L2.84208 35L17.5 20.3421L32.1579 35L35 32.1579L20.3421 17.5L35 2.84208L32.1579 0L17.5 14.6579L2.84208 0Z" fill="#F5F5F5"/>
+                        </svg>
+                    </div>
+
+                    <!-- Логотип -->
+                    <div class="logo-container">
+                        <a href="#title"><img src="assets/images/logo.png" alt="logo"></a>
+                    </div>
+
+                    <!-- Навігація -->
+                    <nav>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <svg class="nav-line" xmlns="http://www.w3.org/2000/svg" width="685" height="2" viewBox="0 0 685 2" fill="none">
+                                <path d="M1 1L684 1" stroke="url(#paint0_linear_56_220)" stroke-width="2" stroke-linecap="round"/>
+                                <defs>
+                                    <linearGradient id="paint0_linear_56_220" x1="1" y1="2.5" x2="684" y2="2.5" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#2A2A2A"/>
+                                        <stop offset="0.484" stop-color="#A46141"/>
+                                        <stop offset="1" stop-color="#2A2A2A"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <li><a href="#">Project</a></li>
+                            <svg class="nav-line" xmlns="http://www.w3.org/2000/svg" width="685" height="2" viewBox="0 0 685 2" fill="none">
+                                <path d="M1 1L684 1" stroke="url(#paint0_linear_56_220)" stroke-width="2" stroke-linecap="round"/>
+                                <defs>
+                                    <linearGradient id="paint0_linear_56_220" x1="1" y1="2.5" x2="684" y2="2.5" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#2A2A2A"/>
+                                        <stop offset="0.484" stop-color="#A46141"/>
+                                        <stop offset="1" stop-color="#2A2A2A"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <li><a href="#">Results</a></li>
+                            <svg class="nav-line" xmlns="http://www.w3.org/2000/svg" width="685" height="2" viewBox="0 0 685 2" fill="none">
+                                <path d="M1 1L684 1" stroke="url(#paint0_linear_56_220)" stroke-width="2" stroke-linecap="round"/>
+                                <defs>
+                                    <linearGradient id="paint0_linear_56_220" x1="1" y1="2.5" x2="684" y2="2.5" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#2A2A2A"/>
+                                        <stop offset="0.484" stop-color="#A46141"/>
+                                        <stop offset="1" stop-color="#2A2A2A"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</header>
+
+<!--Main-->
+<main>
+
+    <div id="title" class="title-content">
+        <div class="container">
+            <div class="title">
+                <h1>Hi we are Messiah-<br>Squad team. <br>And here are our <br>product</h1>
+            </div>
+
+            <div class="button">
+                <button class="learn-more-btn">
+                    <span class="button-text">Learn more</span>
+                    <div class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="38" viewBox="0 0 27 38" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.00163338 19.8598L13.5417 37.5891L27.0016 19.7988L18.0139 19.8191L17.9705 0.579191L8.53537 0.600513L8.57885 19.8404L0.00163338 19.8598Z" fill="#F5F5F5"/>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="about-us">
+        <div class="container">
+            <div class="desktop-only">
+                <div class="about-content">
+
+                    <div class="title-p1">
+                        <h2>About us</h2>
+                    </div>
+                    <div class="line">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2" height="487" viewBox="0 0 2 487" fill="none">
+                            <path d="M2 1C2 0.447715 1.55228 0 1 0C0.447715 0 0 0.447715 0 1L2 1ZM0 1L0 487H2L2 1L0 1Z" fill="#A46141"/>
+                        </svg>
+                    </div>
+                    <div class="about-text">
+                        <p>Dicta sed quia suscipit ad. Cupiditate voluptatem accusamus qui ipsa eius. Ut quae reprehenderit cum vero facere accusantium quae laborum.Dicta sed quia suscipit ad. Cupiditate voluptatem accusamus qui ipsa eius. Ut quae reprehenderit cum vero facere accusantium quae laborum.</p>
+                    </div>
+                    <div class="about-photos">
+                        <img src="assets/images/team1.png" alt="team1" class="team1">
+                        <img src="assets/images/team2.png" alt="team2" class="team2">
+                    </div>
+
+                </div>
+            </div>
+            <div class="mobile-only">
+                <div class="about-content">
+                    <div class="title-p1">
+                        <h2>About us</h2>
+                    </div>
+                    <div class="about1">
+                        <div class="line1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="171" viewBox="0 0 2 487" fill="none">
+                                <path d="M2 1C2 0.447715 1.55228 0 1 0C0.447715 0 0 0.447715 0 1L2 1ZM0 1L0 487H2L2 1L0 1Z" fill="#A46141"/>
+                            </svg>
+                        </div>
+                        <div class="about-text1">
+                            <p>Dicta sed quia suscipit ad. Cupiditate voluptatem accusamus qui ipsa eius. Ut quae reprehenderit cum vero facere accusantium quae laborum.Dicta sed quia suscipit ad. </p>
+                        </div>
+
+                        <img src="assets/images/team1.png" alt="team1" class="team1">
+
+                    </div>
+                    <div class="about2">
+
+                        <img src="assets/images/team2.png" alt="team2" class="team2">
+
+                        <div class="about-text2">
+                            <p>Cupiditate voluptatem accusamus qui ipsa eius. Ut quae reprehenderit cum vero facere accusantium quae laborum.</p>
+                        </div>
+                        <div class="line2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="171" viewBox="0 0 2 487" fill="none">
+                                <path d="M2 1C2 0.447715 1.55228 0 1 0C0.447715 0 0 0.447715 0 1L2 1ZM0 1L0 487H2L2 1L0 1Z" fill="#A46141"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="contact" class="contact">
+        <div class="container">
+
+                <div class="contact-content">
+
+                    <div class="title-p3">
+                        <h2>Contact us</h2>
+                    </div>
+                    <div class="desktop-only">
+                        <div class="line">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="487" viewBox="0 0 2 487" fill="none">
+                                <path d="M2 1C2 0.447715 1.55228 0 1 0C0.447715 0 0 0.447715 0 1L2 1ZM0 1L0 487H2L2 1L0 1Z" fill="#A46141"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="form-container">
+                         <form action="/contactwithus" method="post" novalidate>
+                            <div class="form-group">
+                            <input name="text" placeholder="Name and surname*" required>
+                            </div>
+                             <div class="form-group">
+                             <input name="email" placeholder="Phone or email address*" required>
+                             </div>
+                             <div class="form-group">
+                             <textarea name="message" placeholder="Message*" maxlength="300" required></textarea>
+                             <span class="char-count">0/300</span>
+                             </div>
+                             <button class="submit">Send</button>
+                         </form>
+                    </div>
+                </div>
+
+
+                <div class="contact-info">
+
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 0 50 40" fill="none">
+                                <path d="M50 5C50 2.25 47.75 0 45 0H5C2.25 0 0 2.25 0 5V35C0 37.75 2.25 40 5 40H45C47.75 40 50 37.75 50 35V5ZM45 5L25 17.5L5 5H45ZM45 35H5V10L25 22.5L45 10V35Z" fill="#A46141"/>
+                            </svg>
+                            <span>armoreyesinfo@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 0 50 40" fill="none">
+                                <path d="M9.83333 4.44444C10 6.42222 10.4167 8.35556 11.0833 10.2L7.75 12.8667C6.61111 10.2 5.88889 7.37778 5.63889 4.44444H9.83333ZM37.2222 31.1556C39.5833 31.6889 42 32.0222 44.4444 32.1556V35.4667C40.7778 35.2667 37.25 34.6889 33.8889 33.8L37.2222 31.1556ZM12.5 0L2.77778 0C1.25 0 0 1 0 2.22222C0 23.0889 21.1389 40 47.2222 40C48.75 40 50 39 50 37.7778V30.0222C50 28.8 48.75 27.8 47.2222 27.8C43.7778 27.8 40.4167 27.3556 37.3056 26.5333C37.0278 26.4444 36.7222 26.4222 36.4444 26.4222C35.7222 26.4222 35.0278 26.6444 34.4722 27.0667L28.3611 31.9556C20.5 28.7333 14.0556 23.6 10.0556 17.3111L16.1667 12.4222C16.9444 11.8 17.1667 10.9333 16.8611 10.1556C15.8333 7.66667 15.2778 5 15.2778 2.22222C15.2778 1 14.0278 0 12.5 0Z" fill="#A46141"/>
+                            </svg>
+                            <span>+380635607780</span>
+                        </div>
+
+                </div>
+        </div>
+    </div>
+</main>
+
+<section id="footer" class="footer">
+    <div class="container">
+        <div class="footer-container">
+            <button class="donate-btn">
+                <span class="donate-text">Donate</span>
+            </button>
+
+            <div class="footer-logo">
+                <a href="#title"><img src="assets/images/logo-black.png" alt="logo"></a>
+                <p>© 2024 Armor Eye</p>
+            </div>
+
+        </div>
+    </div>
+    <button class="scroll-top" onclick="scrollToTop()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62" fill="none">
+            <circle cx="31" cy="31" r="30.5" stroke="#2A2A2A"/>
+            <path d="M30.7869 47V14M30.7869 14L18 27.7848M30.7869 14L44 27.7848" stroke="#2A2A2A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </button>
+</section>
+
+
+
+
+
+<script src="index.js"></script>
+<script type= "module" src="/src/main.js"></script>
+
+</body>
+</html>

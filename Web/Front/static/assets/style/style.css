@@ -1,0 +1,1373 @@
+:root {
+    --white: #F5F5F5;
+    --black: #2A2A2A;
+    --grey:  #B5B5B5;
+    --dark-grey: #525252;
+    --orange: #A46141;
+    --blue: #51818B;
+
+    body, html {
+        margin: 0;
+        padding: 0;   /
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;      /* забирає зайвий скролбар */
+    }
+    /*Щрифт для h1*/
+    --font-h1: Montserrat, sans-serif;
+    --font-h1-weight: 900;
+    --font-h1-size: 30px;
+    --font-h1-style: italic;
+    --font-h1-weight: 900;
+    --font-h1-line-height: 1.4; /* 140% */
+    --font-h1-letter-spacing: 0.5px;
+    --font-h1-font-weight: bold;
+
+    /* H2 */
+    --font-h2-family: Montserrat;
+    --font-h2-size: 30px;
+    --font-h2-style: normal;
+    --font-h2-weight: 700;
+    --font-h2-line-height: 40px; /* 80% */
+    --font-h2-letter-spacing: 0.5px;
+
+    /*Шрифт для p*/
+    --font-body:Roboto, sans-serif;
+    --font-body-weight: 400;
+    --font-body-size: 30px;
+    --font-body-style: normal;
+    --font-body-letter-spacing: 0.3px;
+    --font-body-line-height: 1.3;
+
+    /*Шрифт для Tab*/
+    --font-tab: "Montserrat Alternates", serif;
+    --font-tab-size: 15px;
+    --font-tab-style: normal;
+    --font-tab-weight: 500;
+    --font-tab-line-height: 24px; /* 160% */
+    --font-tab-letter-spacing: 0.15px;
+
+}
+
+
+
+
+
+/* Стилі для комп'ютерної версії */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+}
+
+
+
+html, body {
+    height: 100%; /* Забезпечуємо висоту 100% для html та body */
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: var(--dark-grey);
+    overflow-x: hidden; /* Приховуємо горизонтальний скролл */
+}
+
+body {
+    min-height: 100%; /* Мінімальна висота для тіла */
+    overflow-y: auto; /* Дозволяємо вертикальне прокручування */
+}
+
+body{
+    margin-top: 67px;
+}
+
+
+*{
+    box-sizing: border-box;
+}
+.container{
+    max-width: 1440px;
+    margin: 0 180px;
+}
+
+/* ===============Header===========*/
+header{
+    background-color: var(--black);
+    height: 67px;
+    position: fixed; /* Закріплюємо header */
+    top: 0; /* Встановлюємо верхнє положення */
+    left: 0; /* Встановлюємо ліве положення */
+    width: 100%; /* Ширина на всю сторінку */
+    z-index: 10; /* Задаємо висший пріоритет для header */
+}
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img{
+    max-width: 100%;
+    height: auto;
+    display: block; /* Щоб уникнути зайвих відступів */
+    margin: 0 auto;
+}
+
+nav {
+    position: sticky; /* додаємо sticky до навігації */
+    top: 0; /* залишити навігацію на верху */
+    z-index: 1000; /* щоб вона не зникала позаду інших елементів */
+}
+
+nav a{
+    text-decoration: none;
+    margin-right: 25px;
+    color: var(--white);
+    font-family: var(--font-tab);
+    font-optical-sizing: auto;
+    font-weight: var(--font-tab-weight);
+    font-size: var(--font-tab-size);
+    letter-spacing: var(--font-tab-letter-spacing);
+    style: var(--font-tab-style);
+    line-height: var(--font-tab-line-height);
+
+    transition: color .4s ease;
+}
+
+
+
+nav a:hover {
+    color: var(--blue);
+}
+
+nav a.checked {
+    color: var(--blue); /* Колір для активного лінка */
+}
+
+
+nav a:last-child{
+    margin-right: 0;
+}
+
+
+/* ===============Main===========*/
+/* ===============Title===========*/
+.title-content{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url('../images/background.png');
+    background-size: cover; /* Масштабування фонового зображення */
+    background-position: center; /* Центрування фонового зображення */
+    background-repeat: no-repeat; /* Вимкнення повторення */
+
+
+    width: 100%; /* Займає всю ширину екрана */
+    min-height: 100vh; /* Висота на весь екран */
+    margin: 0; /* Відсутність зовнішніх відступів */
+}
+
+.title{
+    font-family: var(--font-h1);
+    font-weight: var(--font-h1-weight);
+    font-size: var(--font-h1-size);
+    font-style: var(--font-h1-style);
+    letter-spacing: var(--font-h1-letter-spacing);
+    line-height: var(--font-h1-line-height);
+    color: var(--white);
+
+}
+
+.button{
+    margin-top: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.learn-more-btn {
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-size: var(--font-body-size);
+    font-style: var(--font-body-style);
+    letter-spacing: var(--font-body-letter-spacing);
+    line-height: var(--font-body-line-height);
+    color: var(--white);
+
+    padding: 22px 75px;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    display: flex;
+    align-items: center; /* Вертикальне вирівнювання */
+    justify-content: center; /* Горизонтальне вирівнювання */
+}
+
+.learn-more-btn:hover {
+    background-color: var(--black); /* Зміна кольору при наведенні */
+}
+
+
+
+
+
+
+
+/* ===============About us=========== */
+.about-content{
+    display: flex;
+    align-items: center;
+
+
+}
+
+.title-p1{
+    font-family: var(--font-h2-family);
+    font-weight: var(--font-h2-weight);
+    font-size: var(--font-h2-size);
+    font-style: var(--font-h2-style);
+    letter-spacing: var(--font-h2-letter-spacing);
+    line-height: var(--font-h2-line-height);
+    color: var(--white);
+
+    white-space: nowrap;
+    text-align: center;
+    width: 241px;
+    margin-right: 33px;
+    margin-bottom: 270px;
+}
+.line{
+    margin-top: 114px;
+}
+.about-text{
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-size: var(--font-body-size);
+    font-style: var(--font-body-style);
+    letter-spacing: var(--font-body-letter-spacing);
+    line-height: var(--font-body-line-height);
+    color: var(--white);
+
+    width: 525px;
+    height: 400px;
+    flex-shrink: 0;
+
+    margin-left: 33px;
+    margin-top: 157px;
+    margin-bottom: 150px;
+}
+
+.about-photos{
+
+    flex-direction: column;
+
+}
+.team1{
+    width: 461px;
+    height: 461px;
+    flex-shrink: 0;
+
+}
+
+.team2{
+    width: 450px;
+    height: 450px;
+    flex-shrink: 0;
+
+}
+/*===================Contact===================*/
+.contact-content{
+    display: flex;
+    align-items: center;
+    margin-bottom: 200px;
+
+
+}
+
+.title-p3{
+    font-family: var(--font-h2-family);
+    font-weight: var(--font-h2-weight);
+    font-size: var(--font-h2-size);
+    font-style: var(--font-h2-style);
+    letter-spacing: var(--font-h2-letter-spacing);
+    line-height: var(--font-h2-line-height);
+    color: var(--white);
+
+    white-space: nowrap;
+    text-align: left;
+    margin-right: 33px;
+    margin-bottom: 270px;
+}
+
+.line{
+    margin-top: 114px;
+}
+
+.form-container {
+    flex: 2;
+    padding-left: 20px;
+    margin-top: 150px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 55px; /* Закруглені кути */
+    background-color: var(--white);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
+
+    color: var(--black);
+    resize: none; /* Забороняє змінювати розмір textarea */
+    outline: none;
+
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-size: var(--font-body-size);
+    font-style: var(--font-body-style);
+    letter-spacing: var(--font-body-letter-spacing);
+    line-height: var(--font-body-line-height);
+}
+
+textarea {
+    border-radius: 55px;
+    height: 274px;
+}
+
+/* Лічильник символів */
+.char-count {
+    position: absolute;
+    bottom: 10px;
+    right: 45px;
+    font-size: 12px;
+    color: var(--grey);
+}
+
+/* Кнопка */
+.submit {
+    padding: 15px;
+    background-color: var(--orange);
+    border: none;
+    border-radius: 30px;
+    color: var(--white);
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+.submit:hover {
+    background-color: #b47056;
+}
+
+.contact-info {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    border: 2px solid var(--white);
+    border-radius: 55px;
+    padding: 15px 45px;
+
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-size: var(--font-body-size);
+    font-style: var(--font-body-style);
+    letter-spacing: var(--font-body-letter-spacing);
+    line-height: var(--font-body-line-height);
+}
+
+.info-item .icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--orange);
+}
+
+/*==============Footer==============*/
+.footer {
+    margin-top: 148px;
+    background-color: var(--white);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.donate-btn {
+    display: flex;
+    width: 255px;
+    height: 72px;
+    padding: 16px 19px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    cursor: pointer;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    background: none;
+    transition: background 0.3s, color 0.3s;
+
+    margin-right: 533px;
+}
+
+.donate-btn:hover {
+    background-color: var(--blue);
+
+}
+
+.footer-logo {
+    text-align: center;
+}
+
+.footer-logo .logo {
+    height: 40px;
+    margin-bottom: 5px;
+}
+.footer-logo p {
+    color: var(--black);
+
+    font-family: var(--font-tab);
+    font-optical-sizing: auto;
+    font-weight: var(--font-tab-weight);
+    font-size: var(--font-tab-size);
+    letter-spacing: var(--font-tab-letter-spacing);
+    style: var(--font-tab-style);
+    line-height: var(--font-tab-line-height);
+
+}
+
+.donate-text{
+    color: var(--black);
+
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-size: var(--font-body-size);
+    font-style: var(--font-body-style);
+    letter-spacing: var(--font-body-letter-spacing);
+    line-height: var(--font-body-line-height);
+}
+
+.scroll-top {
+    width: 62px; /* Встановлюємо чітку ширину */
+    height: 62px; /* Встановлюємо чітку висоту */
+    background: none; /* Без початкового фону */
+    border: none; /* Забираємо зайву обводку */
+    cursor: pointer;
+    position: fixed; /* Закріплення кнопки */
+    bottom: 20px; /* Відступ віднизу */
+    right: 20px; /* Відступ справа */
+    z-index: 1000; /* Визначення пріоритету відображення */
+    border-radius: 50%; /* Робимо фон круглим */
+    display: flex; /* Центруємо іконку всередині кнопки */
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Додаємо плавність */
+}
+
+.scroll-top:hover {
+    background-color: var(--blue); /* Додаємо синій фон при наведенні */
+    transform: scale(1.1); /* Легке збільшення при наведенні */
+}
+
+
+
+
+/* Project Section */
+.project-section {
+    margin-top: 60px;
+    padding: 20px 0;
+    color: rgba(0, 0, 0, 0.87); /* Чорний текст */
+    text-align: left;
+    background-color: #ffffff; /* Білий фон */
+    width: 100%; /* Ширина сторінки */
+    height: 580px; /* Висота сторінки */
+}
+
+.project-header h2 {
+    color: #000000; /* Чорний текст для заголовка */
+}
+
+.project-text {
+    color: rgba(0, 0, 0, 0.87); /* Чорний текст */
+}
+
+.project-text p {
+    color: rgba(0, 0, 0, 0.87); /* Чорний текст для абзаців */
+}
+
+
+.project-header {
+    text-align: left;
+    margin-bottom: 20px;
+    font-family: "JetBrains Sans", Inter, system-ui, sans-serif;
+}
+
+.project-header h2 {
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.project-header h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background-color: #51818B;;
+}
+
+.project-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.project-image-container {
+    flex: 1;
+    position: relative;
+    margin-right: 20px;
+}
+
+.project-image {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 0;
+    right: -10px; /* Зсув лінії */
+    width: 3px;
+    height: 100%;
+    background-color: #51818B;; /* Колір вертикальної лінії */
+}
+
+.project-text {
+    flex: 2;
+    margin-left: 30px; /* Відступ тексту від вертикальної лінії */
+    font-family: "JetBrains Sans", Inter, system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.project-text p {
+    margin-bottom: 20px;
+}
+
+
+
+#results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+}
+
+.text-container {
+    position: relative;
+    z-index: 1; /* Ensures text appears above the SVG */
+    font-size: 36px; /* Text size */
+    margin-top: 30px;
+}
+
+.video-title {
+    font-size: inherit; /* Inherit font size from parent */
+    font-weight: bold;
+    color: white;
+    position: relative;
+}
+
+.text-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    width: 230%; /* Increase width of the SVG */
+    height: 130%; /* Increase height of the SVG */
+    max-width: 250%; /* Prevent overflow */
+}
+
+
+
+
+#video-slider {
+    display: flex;
+    flex-direction: column; /* Розміщує елементи вертикально */
+    align-items: center;
+    position: relative;
+    width: 900px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+
+.video-container {
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+}
+
+#video-slider video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.arrow-left {
+    left: -70px;
+}
+
+.arrow-right {
+    right: -70px;
+}
+.title-p2 {
+    font-family: var(--font-h2-family);
+    font-weight: var(--font-h2-weight);
+    font-size: var(--font-h2-size);
+    font-style: var(--font-h2-style);
+    letter-spacing: var(--font-h2-letter-spacing);
+    line-height: var(--font-h2-line-height);
+    color: var(--white);
+    text-align: center; /* Центрування тексту */
+    margin-bottom: 10px; /* Зменшений відступ між текстом і контентом */
+    margin-top: 20px; /* Відступ зверху для кращої читаємості */
+}
+
+#photo-slider {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.photo-container {
+    width: fit-content;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* важливо! щоб не показувались зайві фото */
+}
+
+.photo-slide {
+    display: none;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.photo-slide.active {
+    display: block;
+}
+
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.arrow-left {
+    left: 0;
+}
+
+.arrow-right {
+    right: 0;
+}
+
+
+
+
+
+
+
+/* Стилі для мобільних пристроїв */
+@media screen and (max-width: 768px) {
+    :root {
+        --white: #F5F5F5;
+        --black: #2A2A2A;
+        --grey:  #B5B5B5;
+        --dark-grey: #525252;
+        --orange: #A46141;
+        --blue: #51818B;
+
+        /*Щрифт для h1*/
+        --font-h1: Montserrat, sans-serif;
+        --font-h1-weight: 900;
+        --font-h1-size: 22px;
+        --font-h1-style: italic;
+        --font-h1-line-height: 1.4; /* 140% */
+        --font-h1-letter-spacing: 0.22px;
+        --font-h1-font-weight: bold;
+
+        /* H2 */
+        --font-h2-family: Montserrat;
+        --font-h2-size: 18px;
+        --font-h2-style: normal;
+        --font-h2-weight: 700;
+        --font-h2-line-height: 40px; /* 80% */
+        --font-h2-letter-spacing: 0.25px;
+
+        /*Шрифт для p*/
+        --font-body:Roboto, sans-serif;
+        --font-body-weight: 400;
+        --font-body-size: 15px;
+        --font-body-style: normal;
+        --font-body-letter-spacing: 0.15px;
+        --font-body-line-height: 20px;
+
+        --font-tab: "Montserrat Alternates", serif;
+        --font-tab-size: 25px;
+        --font-tab-style: normal;
+        --font-tab-weight: 500;
+        --font-tab-line-height: 24px; /* 160% */
+        --font-tab-letter-spacing: 0.25px;
+
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block !important;
+    }
+
+
+    html, body {
+        height: auto; /* Для мобільних пристроїв зазвичай висота body не повинна бути 100% */
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        margin-top: 20px; /* Зменшуємо відступ для мобільних */
+    }
+
+    .container {
+        max-width: 100%; /* Повна ширина для мобільних пристроїв */
+        margin: 0 20px; /* Зменшуємо бокові відступи */
+
+
+    }
+
+    .title-content {
+        background-size: cover; /* Масштабування фонового зображення */
+        background-position: center; /* Центрування фонового зображення */
+
+        height: 568px; /* Висота 568 пікселів для мобільної версії */
+        padding: 0 20px; /* Додаємо відступи з боків для мобільних пристроїв */
+    }
+
+    #menuBtn {
+        background-color: transparent; /* Прозорий фон */
+        border: none; /* Видалити бордюр */
+        outline: none; /* Видалити обводку при фокусі */
+        cursor: pointer; /* Курсор руки при наведенні */
+    }
+
+    #menuBtn img {
+        display: block; /* Убирає зайвий відступ навколо зображення */
+    }
+
+    #closeBtn {
+        background-color: transparent; /* Прозорий фон */
+        border: none; /* Видалити бордюр */
+        outline: none; /* Видалити обводку при фокусі */
+        cursor: pointer; /* Курсор руки при наведенні */
+    }
+
+    #closeBtn img {
+        display: block; /* Убирає зайвий відступ навколо зображення */
+    }
+
+
+    .about-content{
+
+        flex-direction: column;
+
+
+
+    }
+
+    .title-p1{
+        font-family: var(--font-h2-family);
+        font-weight: var(--font-h2-weight);
+        font-size: var(--font-h2-size);
+        font-style: var(--font-h2-style);
+        letter-spacing: var(--font-h2-letter-spacing);
+        line-height: var(--font-h2-line-height);
+        color: var(--white);
+        margin-bottom: 0;
+
+    }
+
+
+    .about1{
+        display: flex;
+        justify-content: center;    /* Вирівнюємо елементи по горизонталі (по центру) */
+        align-items: center;
+    }
+    .about-text1 {
+        font-family: var(--font-body);
+        font-weight: var(--font-body-weight);
+        font-size: var(--font-body-size);
+        font-style: var(--font-body-style);
+        letter-spacing: var(--font-body-letter-spacing);
+        line-height: var(--font-body-line-height);
+        color: var(--white);
+
+        width: 154px;
+        margin-right: 2px;
+
+    }
+
+    .team1{
+        width: 138px;
+        height: 138px;
+        flex-shrink: 0;
+    }
+    .line1{
+        margin-right: 6px;
+
+    }
+
+
+    .about2{
+        display: flex;
+        justify-content: center;    /* Вирівнюємо елементи по горизонталі (по центру) */
+        align-items: center;
+    }
+
+    .team2{
+        width: 122px;
+        height: 122px;
+        flex-shrink: 0;
+        margin-right: 9px;
+    }
+
+    .about-text2 {
+        font-family: var(--font-body);
+        font-weight: var(--font-body-weight);
+        font-size: var(--font-body-size);
+        font-style: var(--font-body-style);
+        letter-spacing: var(--font-body-letter-spacing);
+        line-height: var(--font-body-line-height);
+        color: var(--white);
+
+        width: 154px;
+        margin-right: 6px;
+    }
+
+
+    .contact-content {
+        display: flex; /* Включаємо Flexbox */
+        flex-direction: column; /* Вирівнюємо елементи вертикально */
+        justify-content: center; /* Центруємо елементи по вертикалі */
+        align-items: center; /* Центруємо елементи по горизонталі */
+
+        margin-bottom: 0px;
+
+        width: 100%; /* Забезпечує повну ширину контейнера */
+    }
+
+    .title-p3{
+        margin-bottom: 0px;
+    }
+
+
+
+    .form-container {
+        padding-left: 10px; /* Зменшення відступу */
+        margin-top: 20px; /* Зменшення відступу зверху */
+        width: 100%; /* Контейнер займає всю ширину */
+    }
+
+    form {
+        gap: 15px; /* Зменшення розриву між елементами */
+    }
+
+    input, textarea {
+        padding: 10px; /* Зменшення внутрішніх відступів */
+        font-size: 14px; /* Менший розмір шрифту */
+        border-radius: 20px; /* Зменшення округлення */
+    }
+
+    textarea {
+        height: 200px; /* Зменшення висоти текстової області */
+    }
+
+    .char-count {
+        bottom: 5px; /* Зменшення відступу знизу */
+        right: 15px; /* Зменшення відступу праворуч */
+        font-size: 10px; /* Зменшення розміру шрифту */
+    }
+
+    .submit {
+        padding: 10px; /* Зменшення відступу */
+        font-size: 16px; /* Менший розмір шрифту */
+        border-radius: 20px; /* Зменшення округлення */
+    }
+
+    .title-p3 h2 {
+        font-size: 24px; /* Менший заголовок */
+        text-align: center; /* Вирівнювання по центру */
+    }
+
+
+
+
+
+    #mobile-photo-slider {
+        width: 100%;
+        max-width: 100vw;  /* без переповнення */
+        overflow-x: hidden;
+        margin: 0 auto;
+    }
+    .mobile-photo-container {
+        width: 100%;
+        max-width: 100vw;
+        margin: 0 auto;
+    }
+
+    .photo-slide-mobile {
+        width: 100%;
+        min-width: 100%;
+    }
+
+
+    .contact-info {
+        margin-top: 75px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Зменшуємо ширину кнопки Donate на мобільних */
+    .donate-btn {
+        width: 200px; /* Зменшуємо ширину */
+        height: 60px; /* Зменшуємо висоту */
+        margin-right: 0; /* Виправляємо відступ, щоб не було великого простору праворуч */
+        margin-left: auto; /* Центруємо кнопку */
+        margin-right: auto; /* Центруємо кнопку */
+        margin-top: 20px;
+    }
+
+    /* Оновлюємо відступи для логотипу */
+    .footer-logo {
+        margin-top: 20px;
+    }
+
+    /* Відступи для кнопки скроллу */
+    .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+
+
+
+    /* Початкові стилі для мобільного меню */
+    .mobile-menu {
+        position: fixed; /* Закріплення меню */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(42, 42, 42, 0.95); /* Чорний фон з прозорістю */
+
+        flex-direction: column;
+        align-items: center;
+        /* Центруємо елементи по вертикалі */
+        z-index: 1000; /* Додатковий пріоритет для відображення */
+        display: none; /* Початково приховане меню */
+    }
+
+    .mobile-menu {
+
+        width: 100%;
+    }
+    .close-btn {
+        position: absolute;
+        top: 44px;
+        left: 15px;
+        cursor: pointer;
+    }
+
+
+
+
+    .nav{
+        justify-content: center;
+    }
+
+    /* Стилі для навігаційних ліній */
+    .nav-line {
+        display: block; /* Для коректного відображення лінії */
+        margin: 10px 0; /* Відступи між лінією і елементами списку */
+        width: calc(100% - 84px); /* Ширина лінії на 84px менша за ширину екрана (по 42px з кожного боку) */
+        height: 2px;
+    }
+    .mobile-menu nav ul {
+        display: flex;
+        flex-direction: column; /* Вертикальне вирівнювання */
+        align-items: center;
+        padding: 0;
+    }
+
+    .mobile-menu nav ul li {
+        list-style: none;
+        margin: 38px 0; /* Відступи між елементами меню */
+    }
+
+    .mobile-menu nav ul li a {
+        color: var(--white); /* Колір тексту */
+        font-family: var(--font-tab);
+        font-size: var(--font-tab-size);
+        font-style: var(--font-tab-style);
+        font-weight: var(--font-tab-weight);
+        line-height: var(--font-tab-line-height);
+        letter-spacing: var(--font-tab-letter-spacing);
+
+        /* Для стильного вигляду */
+    }
+
+    /* Лінії між елементами меню */
+    .mobile-menu nav {
+        width: calc(100% - 84px); /* Лінія займає ширину екрану за винятком 42px з кожного боку */
+        height: 2px;
+        margin: 10px 0;
+    }
+
+    .footer-logo p {
+        color: var(--black);
+
+        font-family: var(--font-tab);
+        font-optical-sizing: auto;
+        font-weight: var(--font-tab-weight);
+        font-size: 12px;
+        letter-spacing: var(--font-tab-letter-spacing);
+        style: var(--font-tab-style);
+        line-height: var(--font-tab-line-height);
+
+    }
+}
+/* Mobile Styles */
+@media (max-width: 760px) {
+    .mobile-only {
+        display: block;
+    }
+
+    /* Hide desktop-only elements */
+    .project-section, .results-section, #video-slider {
+        display: none;
+    }
+
+    .project-section.mobile-only {
+        padding: 10px;
+        background-color: #f9f9f9;
+
+    }
+
+    .project-header h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .project-content {
+        flex-direction: column;
+        align-items: center;      /* ✅ Центрування по горизонталі */
+        text-align: center;       /* ✅ Центрування тексту */
+
+    }
+
+    .project-image-container {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .project-image {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .project-text p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+
+    .results-section.mobile-only {
+        padding: 10px;
+        background-color: #ffffff;
+    }
+
+    .results-section.mobile-only h2 {
+        font-size: 22px;
+    }
+
+    .results-section.mobile-only ul {
+        padding-left: 20px;
+    }
+
+    #video-slider.mobile-only {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    #video-slider video {
+        width: 100%;
+    }
+
+    .arrow {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+
+
+.project-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.project-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #000;
+    margin: 5px auto 0;
+}
+
+.project-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.project-description {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+    color: #444;
+    max-width: 400px;
+}
+
+@media (min-width: 600px) {
+    .mobile-only {
+        display: none;
+    }
+}
+
+
+.mobile-only {
+    display: block;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.project-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+.project-description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    text-align: justify;
+}
+
+@media (min-width: 768px) {
+    .mobile-only {
+        display: none;
+    }
+}
+
+
+.project-page.mobile-only {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 20px auto;
+    display: block;
+}
+
+.project-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration-line: underline;
+    text-decoration-color: #51818B;
+    text-underline-offset: 4px;
+    margin-bottom: 15px;
+}
+
+.project-description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: black;
+    text-align: justify;
+    margin-top: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    #mobile-video-slider {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .mobile-only .text-container {
+        font-size: 24px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .mobile-only .text-container {
+        width: 200px;
+        height: 34px;
+        max-width: 180%;
+    }
+
+    .mobile-only .video-container {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .mobile-only video {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+}
+
+
+@media (max-width: 470px) {
+    :root {
+        --white: #F5F5F5;
+        --black: #2A2A2A;
+        --grey: #B5B5B5;
+        --dark-grey: #525252;
+        --orange: #A46141;
+        --blue: #51818B;
+
+        /*Щрифт для h1*/
+        --font-h1: Montserrat, sans-serif;
+        --font-h1-weight: 900;
+        --font-h1-size: 18px;
+        --font-h1-style: italic;
+        --font-h1-line-height: 1.4; /* 140% */
+        --font-h1-letter-spacing: 0.22px;
+        --font-h1-font-weight: bold;
+    }
+    .title{
+        font-family: var(--font-h1);
+        font-weight: var(--font-h1-weight);
+        font-size: var(--font-h1-size);
+        font-style: var(--font-h1-style);
+        letter-spacing: var(--font-h1-letter-spacing);
+        line-height: var(--font-h1-line-height);
+        color: var(--white);
+    }
+}

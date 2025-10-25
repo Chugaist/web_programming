@@ -1,0 +1,6 @@
+__pycache__/
+venv
+feedback_form.py
+.env
+*.envg
+*.reg

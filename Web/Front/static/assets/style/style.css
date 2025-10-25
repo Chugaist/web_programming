@@ -2,7 +2,7 @@
     --white: #F5F5F5;
     --black: #2A2A2A;
     --grey:  #B5B5B5;
-    --dark-grey: linear-gradient(180deg, #3750F0 0%, #2A2C9A 22.12%, #8FCAFD 43.27%, #8EC085 64.42%, #E5F39F 81.73%, #F39F9F 91.83%);    --orange: #A46141;
+    --dark-grey: linear-gradient(180deg, #3750F0 0%, #2A2C9A 22.12%, #8FCAFD 43.27%, #9486DE 67.79%, #DE8692 90.87%);
     --blue: #51818B;
 
     body, html {

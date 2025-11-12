@@ -168,25 +168,41 @@
 
 
   <div id="project" class="projects">
-    <div class="project-section desktop-only">
-      <div class="container">
-        <div class="project-header">
-          <h2>Project</h2>
-        </div>
-        <div class="project-content">
-          <div class="project-image-container">
-            <img src="static/assets/images/projectnew.jpeg" alt="Project" class="project-image">
-            <div class="vertical-line"></div>
+      <div class="project-section desktop-only">
+        <div class="container">
+          <div class="constructor">
+            <h2>🪼 Створи свою медузу</h2>
+
+            <div>
+              <label>Колір:</label>
+              <select id="color">
+                <option value="#ff7eb9">Рожевий</option>
+                <option value="#7ec8ff">Синій</option>
+                <option value="#c67eff">Фіолетовий</option>
+              </select>
+
+              <label>Форма купола:</label>
+              <select id="shape">
+                <option value="round">Круглий</option>
+                <option value="wavy">Хвилястий</option>
+                <option value="spiky">Зі щупальцями по краю</option>
+              </select>
+
+              <label>Тип щупалець:</label>
+              <select id="tentacles">
+                <option value="short">Короткі</option>
+                <option value="long">Довгі</option>
+                <option value="curvy">Хвилясті</option>
+              </select>
+            </div>
+
+            <svg id="jellyfishPreview" viewBox="0 0 100 120"></svg>
+
+            <button id="launch">Запустити медузу</button>
           </div>
-          <div class="project-text">
-            <p>
-              We are working on advanced solutions in the field of computer vision for ground drones. What do we develop?
-              Autonomous navigation– algorithms that enable drones to navigate independently in space.
-              Object recognition – systems that analyze the environment and identify key objects.
-              Obstacle avoidance – technologies for safe movement in complex conditions.
-            </p>
+
+
           </div>
-        </div>
       </div>
     </div>
 

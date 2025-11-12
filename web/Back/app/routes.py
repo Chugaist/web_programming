@@ -37,3 +37,13 @@ def contactwithus():
         return redirect('/')
     except AssertionError or SMTPException:
         return "A server error occurred"
+    
+from flask import send_from_directory
+
+@app.route('/index.js')
+def serve_index_js():
+    return send_from_directory('../../Front', 'index.js')
+
+@app.route('/src/<path:filename>')
+def serve_src_files(filename):
+    return send_from_directory('../../Front/src', filename)

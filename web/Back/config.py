@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 import os
 
 mail_username = str(os.getenv('MAIL_USERNAME'))

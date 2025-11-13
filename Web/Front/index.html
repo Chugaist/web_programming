@@ -37,7 +37,7 @@
           <a href="#about">Про нас</a>
           <a href="#project">Конструктор</a>
           <a href="#results">Виставки</a>
-          <a href="#contact">Конаткти</a>
+          <a href="#contact">Контакти</a>
         </nav>
       </div>
 
@@ -207,172 +207,252 @@
     </div>
 
 
-    <div class="project-page mobile-only">
-      <h2 class="project-title">Project</h2>
-      <img src="static/assets/images/projectnew.jpeg" alt="Project" class="project-image">
-      <p class="project-description">
-        We are working on advanced solutions in the field of computer vision for ground drones. What do we develop?
-        Autonomous navigation– algorithms that enable drones to navigate independently in space.
-        Object recognition – systems that analyze the environment and identify key objects.
-        Obstacle avoidance – technologies for safe movement in complex conditions.
-      </p>
-    </div>
-  </div>
+    <div id="results" class="result" style="padding-top: 80px;"> <div class="container">
 
-  <div id="results" class="result">
-    <div class="container">
+        <h2 class="title-p2 desktop-only" style="text-align: center; color: white; margin-bottom: 60px; font-size: 42px;">Наші Виставки</h2> <div style="display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 100px;">
 
-      <!-- Заголовок Videos -->
-      <h2 class="title-p2 desktop-only">Videos</h2>
-
-      <!-- Десктоп відео-слайдер -->
-      <div id="video-slider" class="desktop-only">
-        <div class="text-container">
-          <span class="video-title">Results</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="364" height="64" viewBox="0 0 364 64" fill="none">
-            <path d="M0.858398 62.6326H262.6L291.196 45.1223L335.248 18.147M363.457 0.873291L335.248 18.147M335.248 18.147H295.833L273.034 31.9255" stroke="#A46141" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <button class="arrow arrow-left" id="prevBtn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="51" height="71" viewBox="0 0 51 71" fill="none">
-            <g filter="url(#filter0_d_24_85)">
-              <path d="M43.1003 7.41071L7.4632 34.6381L41.8065 63.6115" stroke="#F5F5F5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <filter id="filter0_d_24_85" x="0.51727" y="0.357422" width="49.5292" height="70.3074" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset/>
-                <feGaussianBlur stdDeviation="2"/>
-                <feComposite in2="hardAlpha" operator="out"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_24_85"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_24_85" result="shape"/>
-              </filter>
-            </defs>
-          </svg>
-        </button>
-        <div class="video-container">
-          <video id="video-display" autoplay muted loop>
-            <source id="video-source" src="static/assets/images/trial_video_new.mp4" type="video/mp4">
-          </video>
-        </div>
-        <button class="arrow arrow-right" id="nextBtn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="71" viewBox="0 0 50 71" fill="none">
-            <g filter="url(#filter0_d_24_87)">
-              <path d="M7.84976 63.6645L42.8496 35.5555L7.84893 7.44751" stroke="#F5F5F5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <filter id="filter0_d_24_87" x="0.904602" y="0.392578" width="48.8892" height="70.3269" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset/>
-                <feGaussianBlur stdDeviation="2"/>
-                <feComposite in2="hardAlpha" operator="out"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_24_87"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_24_87" result="shape"/>
-              </filter>
-            </defs>
-          </svg>
-        </button>
-      </div>
-
-
-      <!-- Мобільний відео-слайдер разом із заголовком -->
-      <div id="mobile-video-slider" class="mobile-only">
-        <h2 class="title-p2">Videos</h2>
-        <div class="text-container">
-          <span class="video-title">Results</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 364 64" fill="none">
-            <path d="M0.858398 62.6326H262.6L291.196 45.1223L335.248 18.147M363.457 0.873291L335.248 18.147M335.248 18.147H295.833L273.034 31.9255" stroke="#A46141" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="video-container">
-          <video id="mobile-video-display" autoplay muted loop>
-            <source id="mobile-video-source" src="static/assets/images/trial_video_new.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <!-- Заголовок Photos -->
-      <h2 class="title-p2">Photos</h2>
-
-      <!-- Десктоп фото-карусель -->
-      <div id="photo-slider" class="desktop-only">
-        <div class="text-container">
-          <span class="video-title">Gallery</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="364" height="64" viewBox="0 0 364 64" fill="none">
-            <path d="M0.858398 62.6326H262.6L291.196 45.1223L335.248 18.147M363.457 0.873291L335.248 18.147M335.248 18.147H295.833L273.034 31.9255" stroke="#A46141" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <button class="arrow arrow-left" id="prevPhotoBtn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="51" height="71" viewBox="0 0 51 71" fill="none">
-            <g filter="url(#filter0_d_24_85)">
-              <path d="M43.1003 7.41071L7.4632 34.6381L41.8065 63.6115" stroke="#F5F5F5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <filter id="filter0_d_24_85" x="0.51727" y="0.357422" width="49.5292" height="70.3074" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset/>
-                <feGaussianBlur stdDeviation="2"/>
-                <feComposite in2="hardAlpha" operator="out"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_24_85"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_24_85" result="shape"/>
-              </filter>
-            </defs>
-          </svg>
-        </button>
-
-        <div class="photo-container">
-          <img class="photo-slide active" src="static/assets/images/image1.jpg" alt="Photo 1">
-          <img class="photo-slide" src="static/assets/images/image2.jpg" alt="Photo 2">
-          <img class="photo-slide" src="static/assets/images/image3.jpg" alt="Photo 3">
-          <img class="photo-slide" src="static/assets/images/image4.jpg" alt="Photo 4">
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; max-width: 1400px; background: rgba(0,0,0,0.2); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 180, 255, 0.2);">
+            <div style="flex-shrink: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 180, 255, 0.3);">
+                <video id="video1" width="850" autoplay muted loop style="display: block;">
+                    <source src="static/assets/images/video1.mp4" type="video/mp4">
+                    Ваш браузер не підтримує відео.
+                </video>
+            </div>
+            <div style="font-size: 28px; font-weight: bold; font-family: 'Montserrat Alternates', sans-serif; margin-left: 50px; text-align: center; color: white; max-width: 450px; line-height: 1.4;">
+                Світло під хвилями — інтерактивна галерея біолюмінесцентних медуз, що заворожує.
+            </div>
         </div>
 
-        <button class="arrow arrow-right" id="nextPhotoBtn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="71" viewBox="0 0 50 71" fill="none">
-            <g filter="url(#filter0_d_24_87)">
-              <path d="M7.84976 63.6645L42.8496 35.5555L7.84893 7.44751" stroke="#F5F5F5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <filter id="filter0_d_24_87" x="0.904602" y="0.392578" width="48.8892" height="70.3269" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset/>
-                <feGaussianBlur stdDeviation="2"/>
-                <feComposite in2="hardAlpha" operator="out"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_24_87"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_24_87" result="shape"/>
-              </filter>
-            </defs>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Мобільна фото-карусель -->
-      <div id="mobile-photo-slider" class="mobile-only">
-        <div class="photo-container mobile-photo-container">
-          <img class="photo-slide-mobile" src="static/assets/images/image1.jpg" alt="Photo 1">
-          <img class="photo-slide-mobile" src="static/assets/images/image2.jpg" alt="Photo 2">
-          <img class="photo-slide-mobile" src="static/assets/images/image3.jpg" alt="Photo 3">
-          <img class="photo-slide-mobile" src="static/assets/images/image4.jpg" alt="Photo 4">
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; max-width: 1400px; background: rgba(0,0,0,0.2); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 180, 255, 0.2);">
+            <div style="font-size: 28px; font-weight: bold; font-family: 'Montserrat Alternates', sans-serif; margin-right: 50px; text-align: center; color: white; max-width: 450px; line-height: 1.4;">
+                Мандрівка океанами — маршрут через п’ять унікальних зон, що відображають різні куточки світу.
+            </div>
+            <div style="flex-shrink: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 180, 255, 0.3);">
+                <video id="video3" width="850" autoplay muted loop style="display: block;">
+                    <source src="static/assets/images/video3.mp4" type="video/mp4">
+                    Ваш браузер не підтримує відео.
+                </video>
+            </div>
         </div>
-      </div>
 
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; max-width: 1400px; background: rgba(0,0,0,0.2); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 180, 255, 0.2);">
+            <div style="flex-shrink: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 180, 255, 0.3);">
+                <video id="video2" width="850" autoplay muted loop style="display: block;">
+                    <source src="static/assets/images/video2.mp4" type="video/mp4">
+                    Ваш браузер не підтримує відео.
+                </video>
+            </div>
+            <div style="font-size: 28px; font-weight: bold; font-family: 'Montserrat Alternates', sans-serif; margin-left: 50px; text-align: center; color: white; max-width: 450px; line-height: 1.4;">
+                Таємниці прозорості — науково-дослідна зона, де ви дізнаєтесь, як медузи живуть без мозку та серця, адаптуючись до життя в океані.
+            </div>
+        </div>
 
     </div>
-  </div>
+    </div>
+    </div>
 
 
+    <!DOCTYPE html>
+    <html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Міфи та Факти про Медуз (3D Flip) - Стаціонарна версія</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+
+            body {
+                background-color: #000a12;
+                color: white;
+                font-family: 'Montserrat', sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            #myths-facts {
+                padding: 100px 20px;
+                text-align: center;
+                background: linear-gradient(180deg, #6c5ce7, #8e44ad);
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            h2 {
+                font-size: 42px;
+                color: white;
+                margin-bottom: 60px;
+                font-family: 'Montserrat Alternates', sans-serif;
+            }
+
+            #myths-facts > p {
+                font-size: 20px;
+                color: #BAF4FF;
+                margin-bottom: 40px;
+            }
 
 
+            .cards-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 50px;
+            }
 
-  
+
+            .card {
+                width: 350px;
+                height: 250px;
+                cursor: pointer;
+                position: relative;
+                perspective: 1000px;
+            }
+
+
+            .card-inner {
+                position: relative;
+                width: 80%;
+                height: 85%;
+                text-align: center;
+                transition: transform 0.6s, box-shadow 0.3s ease; /* Додаємо box-shadow до transition */
+                transform-style: preserve-3d;
+
+
+            }
+
+            
+            /* Активація обертання при кліку */
+            .card-inner.is-flipped {
+                transform: rotateY(180deg);
+            }
+
+            /* Спільні стилі для обох сторін */
+            .card-front, .card-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 15px;
+                padding: 30px;
+                backface-visibility: hidden;
+                background: rgba(255, 255, 255, 0.1);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .card-front {
+                transform: rotateY(0deg);
+            }
+
+            .card-back {
+                background: rgba(0, 150, 200, 0.8);
+                transform: rotateY(180deg);
+            }
+
+            .card-front h3 {
+                font-size: 24px;
+                color: white;
+                margin-bottom: 15px;
+                font-family: 'Montserrat Alternates', sans-serif;
+            }
+
+            .card-front p {
+                font-size: 22px;
+                color: white;
+                font-weight: bold;
+            }
+
+            .card-back .answer {
+                font-size: 28px;
+                font-weight: 900;
+                text-align: center;
+                line-height: 1.4;
+            }
+
+            .answer.myth {
+                color: #ff7eb9;
+            }
+
+            .answer.fact {
+                color: #7ec8ff;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+    <div id="myths-facts">
+        <div class="container">
+            <h2>Міфи та Факти про Медуз</h2>
+            <p>Клікніть на картку, щоб дізнатися правду!</p>
+
+            <div class="cards-container">
+
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Міф чи Факт?</h3>
+                            <p>Медузи мають мозок, але прихований глибоко в тілі.</p>
+                        </div>
+                        <div class="card-back">
+                            <div class="answer myth">
+                                 МІФ! У них є лише нервова сітка.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Міф чи Факт?</h3>
+                            <p>Існує вид медуз, що вважається біологічно безсмертним.</p>
+                        </div>
+                        <div class="card-back">
+                            <div class="answer fact">
+                                 ФАКТ! Це Turritopsis dohrnii.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Міф чи Факт?</h3>
+                            <p>Більшість тіла медузи складає вода (понад 98%).</p>
+                        </div>
+                        <div class="card-back">
+                            <div class="answer fact">
+                                 ФАКТ! Це допомагає їм легко плавати.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard(cardElement) {
+            const cardInner = cardElement.querySelector('.card-inner');
+
+            if (cardInner) {
+                cardInner.classList.toggle('is-flipped');
+            }
+        }
+    </script>
+
+    </body>
+    </html>
+
+
 
   <div id="contact" class="contact">
     <div class="container">

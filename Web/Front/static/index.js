@@ -1,12 +1,12 @@
 // Дочекаємось завантаження DOM
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Плавне прокручування до "About us" при натисканні кнопки "Learn more"
     const learnMoreBtn = document.querySelector(".learn-more-btn");
     const aboutSection = document.querySelector(".about-us");
 
     if (learnMoreBtn && aboutSection) {
-        learnMoreBtn.addEventListener("click", function() {
-            aboutSection.scrollIntoView({ behavior: "smooth" });
+        learnMoreBtn.addEventListener("click", function () {
+            aboutSection.scrollIntoView({behavior: "smooth"});
         });
     }
 
@@ -15,20 +15,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const sections = document.querySelectorAll("[data-section]");
 
     navLinks.forEach(link => {
-        link.addEventListener("click", function(event) {
+        link.addEventListener("click", function (event) {
             event.preventDefault();
             const targetId = link.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
-                targetSection.scrollIntoView({ behavior: "smooth" });
+                targetSection.scrollIntoView({behavior: "smooth"});
             }
 
             // Якщо мобільне меню — ховаємо після натискання
             closeMenu();
         });
     });
-
-
 
 
 });
@@ -64,9 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
             t.setAttribute("fill", "none");
 
             const x = 20 + i * 15;
-            if (tentacles === "short") t.setAttribute("d", `M${x},60 Q${x+5},90 ${x},100`);
-            if (tentacles === "long") t.setAttribute("d", `M${x},60 Q${x+10},100 ${x},120`);
-            if (tentacles === "curvy") t.setAttribute("d", `M${x},60 Q${x+10},80 ${x},100 Q${x-10},120 ${x},140`);
+            if (tentacles === "short") t.setAttribute("d", `M${x},60 Q${x + 5},90 ${x},100`);
+            if (tentacles === "long") t.setAttribute("d", `M${x},60 Q${x + 10},100 ${x},120`);
+            if (tentacles === "curvy") t.setAttribute("d", `M${x},60 Q${x + 10},80 ${x},100 Q${x - 10},120 ${x},140`);
 
             svgEl.appendChild(t);
         }
@@ -77,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     [colorSelect, shapeSelect, tentacleSelect].forEach(el =>
-      el.addEventListener("change", updatePreview)
+        el.addEventListener("change", updatePreview)
     );
 
     updatePreview();
@@ -133,8 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
 const container = document.getElementById('bubble-container');
 let lastScrollTop = 0;
 
@@ -174,9 +170,6 @@ window.addEventListener('scroll', () => {
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
-
-
-
 
 
 

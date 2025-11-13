@@ -5,13 +5,7 @@
     --dark-grey: linear-gradient(180deg, #3750F0 0%, #2A2C9A 22.12%, #8FCAFD 43.27%, #9486DE 67.79%, #DE8692 90.87%);
     --blue: #51818B;
 
-    body, html {
-        margin: 0;
-        padding: 0;   /
-        overflow-x: hidden;
-        overflow-y: auto;
-        height: 100%;      /* забирає зайвий скролбар */
-    }
+
     /*Щрифт для h1*/
     --font-h1: Montserrat, sans-serif;
     --font-h1-weight: 900;
@@ -37,14 +31,6 @@
     --font-body-style: normal;
     --font-body-letter-spacing: 0.3px;
     --font-body-line-height: 1.3;
-
-    /*Шрифт для Tab*/
-    --font-tab: "Montserrat Alternates", serif;
-    --font-tab-size: 15px;
-    --font-tab-style: normal;
-    --font-tab-weight: 500;
-    --font-tab-line-height: 24px; /* 160% */
-    --font-tab-letter-spacing: 0.15px;
 
 }
 
@@ -119,15 +105,19 @@ header {
 .desktop-only nav a {
     text-decoration: none;
     margin-left: 25px; /* Відступи між лінками */
-    color: var(--white);
-    font-family: var(--font-tab);
-    font-weight: var(--font-tab-weight);
-    font-size: var(--font-tab-size);
-    letter-spacing: var(--font-tab-letter-spacing);
-    font-style: var(--font-tab-style);
-    line-height: var(--font-tab-line-height);
+    color: #F5F5F5; /* замість var(--white) */
+    
+    /* Вручну прописані шрифти */
+    font-family: "Montserrat Alternates", serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.15px;
+    font-style: normal;
+    line-height: 24px;
+
     transition: color 0.4s ease;
 }
+
 
 .desktop-only nav a:hover,
 .desktop-only nav a.checked {
@@ -1552,4 +1542,164 @@ button:hover {
         line-height: var(--font-h1-line-height);
         color: var(--white);
     }
+}
+
+body {
+    background-color: #000a12;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ====== Виставки ====== */
+.result {
+    padding-top: 80px;
+}
+
+.title-p2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 60px;
+    font-size: 42px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.exhibitions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 100px;
+}
+
+.exhibition {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 180, 255, 0.2);
+}
+
+.exhibition.reverse {
+    flex-direction: row-reverse;
+}
+
+.exhibition-video {
+    flex-shrink: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 180, 255, 0.3);
+}
+
+.exhibition-text {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-align: center;
+    color: white;
+    max-width: 450px;
+    line-height: 1.4;
+    margin: 0 50px;
+}
+
+/* ====== Міфи та Факти ====== */
+#myths-facts {
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(180deg, #6c5ce7, #8e44ad);
+}
+
+#myths-facts h2 {
+    font-size: 42px;
+    color: white;
+    margin-bottom: 60px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#myths-facts > p {
+    font-size: 20px;
+    color: #BAF4FF;
+    margin-bottom: 40px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.card {
+    width: 350px;
+    height: 250px;
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 80%;
+    height: 85%;
+    text-align: center;
+    transition: transform 0.6s, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 30px;
+    backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back {
+    background: rgba(0, 150, 200, 0.8);
+    transform: rotateY(180deg);
+}
+
+.card-front h3 {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 15px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.card-front p {
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+}
+
+.card-back .answer {
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.answer.myth {
+    color: #ff7eb9;
+}
+
+.answer.fact {
+    color: #7ec8ff;
 }

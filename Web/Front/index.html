@@ -207,250 +207,165 @@
     </div>
 
 
-    <div id="results" class="result" style="padding-top: 80px;"> <div class="container">
+    <!-- 🪸 Секція виставок -->
+    <section id="results" class="result">
+      <div class="container">
+          <h2 class="title-p2 desktop-only">Наші Виставки</h2>
 
-        <h2 class="title-p2 desktop-only" style="text-align: center; color: white; margin-bottom: 60px; font-size: 42px;">Наші Виставки</h2> <div style="display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 100px;">
+          <div class="exhibitions">
+              <div class="exhibition">
+                  <div class="exhibition-video">
+                      <video id="video1" width="850" autoplay muted loop>
+                          <source src="static/assets/images/video1.mp4" type="video/mp4">
+                          Ваш браузер не підтримує відео.
+                      </video>
+                  </div>
+                  <div class="exhibition-text">
+                      Світло під хвилями — інтерактивна галерея біолюмінесцентних медуз, що заворожує.
+                  </div>
+              </div>
 
-        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; max-width: 1400px; background: rgba(0,0,0,0.2); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 180, 255, 0.2);">
-            <div style="flex-shrink: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 180, 255, 0.3);">
-                <video id="video1" width="850" autoplay muted loop style="display: block;">
-                    <source src="static/assets/images/video1.mp4" type="video/mp4">
-                    Ваш браузер не підтримує відео.
-                </video>
+              <div class="exhibition reverse">
+                  <div class="exhibition-text">
+                      Мандрівка океанами — маршрут через п’ять унікальних зон, що відображають різні куточки світу.
+                  </div>
+                  <div class="exhibition-video">
+                      <video id="video3" width="850" autoplay muted loop>
+                          <source src="static/assets/images/video3.mp4" type="video/mp4">
+                          Ваш браузер не підтримує відео.
+                      </video>
+                  </div>
+              </div>
+
+              <div class="exhibition">
+                  <div class="exhibition-video">
+                      <video id="video2" width="850" autoplay muted loop>
+                          <source src="static/assets/images/video2.mp4" type="video/mp4">
+                          Ваш браузер не підтримує відео.
+                      </video>
+                  </div>
+                  <div class="exhibition-text">
+                      Таємниці прозорості — науково-дослідна зона, де ви дізнаєтесь, як медузи живуть без мозку та серця, адаптуючись до життя в океані.
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section id="myths-facts">
+    <div class="container">
+      <h2>Міфи та Факти про Медуз</h2>
+      <p>Клікніть на картку, щоб дізнатися правду!</p>
+  
+      <div class="cards-container">
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3>Міф чи Факт?</h3>
+              <p>Медузи мають мозок, але прихований глибоко в тілі.</p>
             </div>
-            <div style="font-size: 28px; font-weight: bold; font-family: 'Montserrat Alternates', sans-serif; margin-left: 50px; text-align: center; color: white; max-width: 450px; line-height: 1.4;">
-                Світло під хвилями — інтерактивна галерея біолюмінесцентних медуз, що заворожує.
+            <div class="card-back">
+              <div class="answer myth">
+                МІФ! У них є лише нервова сітка.
+              </div>
             </div>
+          </div>
         </div>
-
-        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; max-width: 1400px; background: rgba(0,0,0,0.2); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 180, 255, 0.2);">
-            <div style="font-size: 28px; font-weight: bold; font-family: 'Montserrat Alternates', sans-serif; margin-right: 50px; text-align: center; color: white; max-width: 450px; line-height: 1.4;">
-                Мандрівка океанами — маршрут через п’ять унікальних зон, що відображають різні куточки світу.
+  
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3>Міф чи Факт?</h3>
+              <p>Існує вид медуз, що вважається біологічно безсмертним.</p>
             </div>
-            <div style="flex-shrink: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 180, 255, 0.3);">
-                <video id="video3" width="850" autoplay muted loop style="display: block;">
-                    <source src="static/assets/images/video3.mp4" type="video/mp4">
-                    Ваш браузер не підтримує відео.
-                </video>
+            <div class="card-back">
+              <div class="answer fact">
+                ФАКТ! Це <i>Turritopsis dohrnii</i>.
+              </div>
             </div>
+          </div>
         </div>
-
-        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; max-width: 1400px; background: rgba(0,0,0,0.2); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0, 180, 255, 0.2);">
-            <div style="flex-shrink: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 180, 255, 0.3);">
-                <video id="video2" width="850" autoplay muted loop style="display: block;">
-                    <source src="static/assets/images/video2.mp4" type="video/mp4">
-                    Ваш браузер не підтримує відео.
-                </video>
+  
+        <div class="card" onclick="flipCard(this)">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3>Міф чи Факт?</h3>
+              <p>Більшість тіла медузи складає вода (понад 98%).</p>
             </div>
-            <div style="font-size: 28px; font-weight: bold; font-family: 'Montserrat Alternates', sans-serif; margin-left: 50px; text-align: center; color: white; max-width: 450px; line-height: 1.4;">
-                Таємниці прозорості — науково-дослідна зона, де ви дізнаєтесь, як медузи живуть без мозку та серця, адаптуючись до життя в океані.
+            <div class="card-back">
+              <div class="answer fact">
+                ФАКТ! Це допомагає їм легко плавати.
+              </div>
             </div>
+          </div>
         </div>
-
+      </div>
     </div>
-    </div>
-    </div>
+  </section>
+  
 
-
-    <!DOCTYPE html>
-    <html lang="uk">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Міфи та Факти про Медуз (3D Flip) - Стаціонарна версія</title>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-        <style>
-
-            body {
-                background-color: #000a12;
-                color: white;
-                font-family: 'Montserrat', sans-serif;
-                margin: 0;
-                padding: 0;
-            }
-
-            #myths-facts {
-                padding: 100px 20px;
-                text-align: center;
-                background: linear-gradient(180deg, #6c5ce7, #8e44ad);
-            }
-
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
-            h2 {
-                font-size: 42px;
-                color: white;
-                margin-bottom: 60px;
-                font-family: 'Montserrat Alternates', sans-serif;
-            }
-
-            #myths-facts > p {
-                font-size: 20px;
-                color: #BAF4FF;
-                margin-bottom: 40px;
-            }
-
-
-            .cards-container {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 50px;
-            }
-
-
-            .card {
-                width: 350px;
-                height: 250px;
-                cursor: pointer;
-                position: relative;
-                perspective: 1000px;
-            }
-
-
-            .card-inner {
-                position: relative;
-                width: 80%;
-                height: 85%;
-                text-align: center;
-                transition: transform 0.6s, box-shadow 0.3s ease; /* Додаємо box-shadow до transition */
-                transform-style: preserve-3d;
-
-
-            }
-
-            
-            /* Активація обертання при кліку */
-            .card-inner.is-flipped {
-                transform: rotateY(180deg);
-            }
-
-            /* Спільні стилі для обох сторін */
-            .card-front, .card-back {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                border-radius: 15px;
-                padding: 30px;
-                backface-visibility: hidden;
-                background: rgba(255, 255, 255, 0.1);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-
-            .card-front {
-                transform: rotateY(0deg);
-            }
-
-            .card-back {
-                background: rgba(0, 150, 200, 0.8);
-                transform: rotateY(180deg);
-            }
-
-            .card-front h3 {
-                font-size: 24px;
-                color: white;
-                margin-bottom: 15px;
-                font-family: 'Montserrat Alternates', sans-serif;
-            }
-
-            .card-front p {
-                font-size: 22px;
-                color: white;
-                font-weight: bold;
-            }
-
-            .card-back .answer {
-                font-size: 28px;
-                font-weight: 900;
-                text-align: center;
-                line-height: 1.4;
-            }
-
-            .answer.myth {
-                color: #ff7eb9;
-            }
-
-            .answer.fact {
-                color: #7ec8ff;
-            }
-
-
-        </style>
-    </head>
-    <body>
-
-    <div id="myths-facts">
-        <div class="container">
-            <h2>Міфи та Факти про Медуз</h2>
-            <p>Клікніть на картку, щоб дізнатися правду!</p>
-
-            <div class="cards-container">
-
-                <div class="card" onclick="flipCard(this)">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3>Міф чи Факт?</h3>
-                            <p>Медузи мають мозок, але прихований глибоко в тілі.</p>
-                        </div>
-                        <div class="card-back">
-                            <div class="answer myth">
-                                 МІФ! У них є лише нервова сітка.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" onclick="flipCard(this)">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3>Міф чи Факт?</h3>
-                            <p>Існує вид медуз, що вважається біологічно безсмертним.</p>
-                        </div>
-                        <div class="card-back">
-                            <div class="answer fact">
-                                 ФАКТ! Це Turritopsis dohrnii.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" onclick="flipCard(this)">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3>Міф чи Факт?</h3>
-                            <p>Більшість тіла медузи складає вода (понад 98%).</p>
-                        </div>
-                        <div class="card-back">
-                            <div class="answer fact">
-                                 ФАКТ! Це допомагає їм легко плавати.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function flipCard(cardElement) {
-            const cardInner = cardElement.querySelector('.card-inner');
-
-            if (cardInner) {
-                cardInner.classList.toggle('is-flipped');
-            }
-        }
+  <style>
+  .cards-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 280px;
+    height: 200px;
+    perspective: 1000px; /* для 3D ефекту */
+    cursor: pointer;
+  }
+  
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d; /* ключове для 3D */
+  }
+  
+  .card-inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* ховає задню сторону при перегляді спереду */
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .card-back {
+    background: rgba(0, 150, 200, 0.8);
+    transform: rotateY(180deg);
+  }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const inner = card.querySelector('.card-inner');
+                inner.classList.toggle('is-flipped');
+            });
+        });
+    });
     </script>
+    
 
-    </body>
-    </html>
 
 
 

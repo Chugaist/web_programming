@@ -1,10 +1,1444 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Ocean - Океанаріум</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==================== ЗАГАЛЬНІ СТИЛІ ==================== */
+        :root {
+            /* Нова палітра: Спокійний океан */
+            --bg-dark: #0f172a;       /* Темно-синій матовий */
+            --bg-secondary: #1e293b;  /* Світліший синій */
+            --accent-primary: #38bdf8; /* Небесно-блакитний */
+            --accent-hover: #0ea5e9;   /* Насичений блакитний */
+            --accent-secondary: #6366f1; /* Індиго */
+            --accent-alert: #e11d48;     /* Червоний (для знижок/помилок) */
+
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(148, 163, 184, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Inter', sans-serif; /* Прибрано Orbitron */
+            font-weight: 700;
+            color: var(--text-light);
+            text-shadow: none; /* Прибрано світіння */
+        }
+
+        /* Оновлений Glassmorphism (без світіння) */
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Стандартна кнопка (без неону) */
+        .neon-btn {
+            background: var(--accent-primary);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0f172a; /* Темний текст на світлій кнопці */
+            border-radius: 8px; /* Менш округлі кути */
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: none;
+            text-transform: none; /* Скасовано капс */
+            letter-spacing: normal;
+        }
+
+        .neon-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .neon-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            min-height: auto; /* Прибрано обов'язкове 100vh для компактності */
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        /* ==================== HERO СЕКЦІЯ ==================== */
+        #hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Потімнений фон для кращої читабельності */
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
+            url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=80') center/cover no-repeat;
+            background-attachment: scroll;
+            position: relative;
+        }
+
+        /* Прибрано ::before з анімацією pulse */
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1.5rem;
+            animation: none; /* Прибрано glow анімацію */
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* ==================== ПРО НАС ==================== */
+        #about {
+            background: var(--bg-dark);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-primary);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .about-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: none; /* Прибрано неонову рамку */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+        }
+
+        /* ==================== КОНСТРУКТОР МЕДУЗИ ==================== */
+        /* Контейнер конструктора */
+        .constructor {
+            background: #0f172a;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .constructor h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #f8fafc;
+        }
+
+        /* Сітка для елементів керування */
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .control-item label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .control-item select {
+            width: 100%;
+            padding: 0.8rem;
+            background: #1e293b;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 8px;
+            color: #f8fafc;
+            font-size: 1rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Стиль прев'ю */
+        #jellyfishPreview {
+            width: 200px;
+            height: 240px;
+            margin: 0 auto 2rem auto;
+            display: block;
+            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.1));
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        /* Кнопка */
+        .neon-btn {
+            background: #38bdf8;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0f172a;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .neon-btn:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+        }
+
+        /* Клас для плаваючої медузи (додається через JS) */
+        .floating-jellyfish {
+            pointer-events: none;
+            z-index: 9999;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+
+
+        /* ==================== ВИСТАВКИ ==================== */
+        #exhibitions {
+            background: var(--bg-dark);
+        }
+
+        #exhibitions h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-light);
+        }
+
+        .exhibitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .exhibition-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        .exhibition-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+        }
+
+        .exhibition-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .exhibition-info {
+            padding: 1.5rem;
+        }
+
+        .exhibition-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .exhibition-info p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .exhibition-info .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary); /* Просто колір, без тіні */
+            margin-bottom: 1rem;
+        }
+
+        .exhibition-info button {
+            width: 100%;
+        }
+
+        /* ==================== МОДАЛЬНЕ ВІКНО ==================== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--bg-secondary); /* Просто суцільний колір */
+            margin: 5% auto;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close:hover {
+            color: var(--text-light);
+            transform: none;
+        }
+
+        .modal-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1); /* М'який фокус */
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* ==================== КАЛЬКУЛЯТОР ==================== */
+        #calculator {
+            background: var(--bg-dark);
+            text-align: center;
+        }
+
+        #calculator h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .control-group {
+            margin-bottom: 2rem;
+        }
+
+        .control-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--accent-primary); /* Блакитний колір для підписів */
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .control-group select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .control-group select:focus {
+            border-color: var(--accent-primary);
+        }
+
+        /* Блок результату */
+        .calculator-result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.6); /* Напівпрозорий темний фон */
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-row.main {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .price-row .label {
+            color: var(--text-muted);
+        }
+
+        /* ВИПРАВЛЕНО: Колір старої ціни */
+        .old-price {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.5); /* Світло-сірий, щоб було видно на темному */
+            font-size: 1.1rem;
+        }
+
+        .new-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary); /* Яскравий блакитний */
+        }
+
+        .discount-badge {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--accent-alert); /* Червоний/Рожевий */
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ==================== КВІЗ ==================== */
+        #quiz {
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        #quiz h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .quiz-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        .quiz-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .question h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .answer-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .answer-btn:hover {
+            border-color: var(--accent-primary);
+            background: rgba(56, 189, 248, 0.05);
+            transform: translateX(5px);
+        }
+
+        .answer-btn.selected {
+            border-color: var(--accent-primary);
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-primary);
+            font-weight: 500;
+        }
+
+        .quiz-result {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            display: none;
+        }
+
+        .quiz-result.show {
+            display: block;
+            animation: bounceIn 0.5s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .promo-code {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            text-shadow: none;
+            margin: 1rem 0;
+            font-family: monospace;
+            letter-spacing: 2px;
+            background: rgba(0,0,0,0.2);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* ==================== КОНТАКТИ ==================== */
+        #contacts {
+            background: var(--bg-dark);
+        }
+
+        #contacts h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-light);
+        }
+
+        .contacts-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .contact-item i {
+            font-size: 1.25rem;
+            color: var(--accent-primary);
+        }
+
+        .contact-form {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+
+        /* ==================== ФУТЕР ==================== */
+        footer {
+            background: #0b1120; /* Найтемніший відтінок */
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Секція відео галереї */
+        #video-gallery {
+            background: var(--bg-dark); /* Або просто #0f172a */
+        }
+
+        .video-card {
+            display: flex;
+            align-items: center;
+            background: #0a1929; /* Темно-синій фон картки */
+            border-radius: 20px;
+            overflow: hidden; /* Щоб відео не вилазило за кути */
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.1); /* Легка рамка */
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8; /* Підсвітка при наведенні */
+        }
+
+        /* Клас для реверсу (відео справа) */
+        .video-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .video-wrapper {
+            width: 50%;
+            height: 300px;
+            position: relative;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Відео заповнює блок без розтягування */
+            display: block;
+        }
+
+        .video-text {
+            width: 50%;
+            padding: 3rem;
+            color: #f8fafc;
+        }
+
+        .video-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #38bdf8; /* Блакитний заголовок */
+        }
+
+        .video-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* Адаптивність для мобільних */
+        @media (max-width: 768px) {
+            .video-card, .video-card.reverse {
+                flex-direction: column;
+            }
+
+            .video-wrapper, .video-text {
+                width: 100%;
+            }
+
+            .video-text {
+                padding: 2rem;
+                text-align: center;
+            }
+        }
+
+
+        /* ==================== АДАПТИВНІСТЬ ==================== */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .about-content,
+            .contacts-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .constructor-content {
+                flex-direction: column;
+            }
+
+            .about-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+            }
+
+            .exhibitions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+                margin: 10% auto;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    </style>
 </head>
 <body>
-$END$
+
+<section id="hero">
+    <div class="hero-content">
+        <h1>Світ Глибин</h1>
+        <p>Місце, де оживають легенди океану</p>
+        <button class="neon-btn" onclick="smoothScroll('#about')">
+            <i class="fas fa-water"></i> Зануритися
+        </button>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text glass">
+                <h2>Про Океанаріум</h2>
+                <p>
+                    Ми — сучасний науково-освітній центр, присвячений вивченню морської біології.
+                    Ми поєднуємо традиційні експозиції з передовими дослідженнями.
+                </p>
+                <p>
+                    У наших залах ви побачите понад 5000 морських мешканців. Ми прагнемо
+                    зберегти біорізноманіття та надихнути відвідувачів на захист океану.
+                </p>
+                <p>
+                    Інтерактивні зони та освітні програми доступні для відвідувачів будь-якого віку.
+                </p>
+            </div>
+            <div class="about-gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Coral Reef">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&q=80" alt="Jellyfish">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560275619-4662e36fa65c?w=400&q=80" alt="Tropical Fish">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="video-gallery">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 3rem; color: var(--text-light);">Пориньте у Світло: Наші Мешканці</h2>
+
+        <div class="video-card">
+            <div class="video-wrapper">
+                <video loop muted playsinline class="scroll-video">
+                    <source src="video1.MP4" type="video/mp4">
+                    Ваш браузер не підтримує відео.
+                </video>
+            </div>
+            <div class="video-text">
+                <h3>Магія Світла</h3>
+                <p>Світло під хвилями — інтерактивна галерея біолюмінесцентних медуз, що заворожує.</p>
+            </div>
+        </div>
+
+        <div class="video-card reverse">
+            <div class="video-wrapper">
+                <video loop muted playsinline class="scroll-video">
+                    <source src="video2.MP4" type="video/mp4">
+                    Ваш браузер не підтримує відео.
+                </video>
+            </div>
+            <div class="video-text">
+                <h3>Танець Коралів</h3>
+                <p>Яскраві риби-клоуни та морські анемони в гармонії кольорів. Відкрийте для себе симбіоз життя на рифі.</p>
+            </div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-wrapper">
+                <video loop muted playsinline class="scroll-video">
+                    <source src=video3.MP4" type="video/mp4">
+                    Ваш браузер не підтримує відео.
+                </video>
+            </div>
+            <div class="video-text">
+                <h3>Таємниці Глибин</h3>
+                <p>Зустріч з тими, хто живе у вічній темряві. Унікальні кадри глибоководних хижаків.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<section id="jellyfish-constructor">
+    <div class="container">
+        <div class="constructor">
+            <h2>Створи свою медузу</h2>
+
+            <div class="controls-grid">
+                <div class="control-item">
+                    <label>Колір:</label>
+                    <select id="color">
+                        <option value="#ff7eb9">Рожевий</option>
+                        <option value="#7ec8ff">Блакитний</option>
+                        <option value="#c67eff">Фіолетовий</option>
+                        <option value="#4ade80">Зелений</option>
+                        <option value="#fbbf24">Золотий</option>
+                    </select>
+                </div>
+
+                <div class="control-item">
+                    <label>Форма купола:</label>
+                    <select id="shape">
+                        <option value="round">Круглий</option>
+                        <option value="wavy">Хвилястий</option>
+                        <option value="spiky">Гострий</option>
+                    </select>
+                </div>
+
+                <div class="control-item">
+                    <label>Тип щупалець:</label>
+                    <select id="tentacles">
+                        <option value="short">Короткі</option>
+                        <option value="long">Довгі</option>
+                        <option value="curvy">Вигнуті</option>
+                    </select>
+                </div>
+            </div>
+
+            <svg id="jellyfishPreview" viewBox="0 0 100 120"></svg>
+
+            <button id="launch" class="neon-btn">Запустити медузу</button>
+        </div>
+    </div>
+</section>
+
+
+<section id="exhibitions">
+    <div class="container">
+        <h2>Наші Виставки</h2>
+        <div class="exhibitions-grid">
+            <div class="exhibition-card">
+                <img src="https://images.unsplash.com/photo-1560275619-4662e36fa65c?w=600&q=80" alt="Акули">
+                <div class="exhibition-info">
+                    <h3><i class="fas fa-fish"></i> Володарі Океану</h3>
+                    <p>Зустрічайте найбільш вражаючих хижаків морів: акул-молотів, тигрових акул та білих акул.</p>
+                    <div class="price">450 ₴</div>
+                    <button class="neon-btn" onclick="openBookingModal('Володарі Океану', 450)">
+                        <i class="fas fa-ticket-alt"></i> Замовити квиток
+                    </button>
+                </div>
+            </div>
+            <div class="exhibition-card">
+                <img src="https://images.unsplash.com/photo-1544552866-d3ed42536cfd?w=600&q=80" alt="Рифи">
+                <div class="exhibition-info">
+                    <h3><i class="fas fa-coral"></i> Коралові Рифи</h3>
+                    <p>Яскраві коралові сади з сотнями видів тропічних риб та морських зірок.</p>
+                    <div class="price">350 ₴</div>
+                    <button class="neon-btn" onclick="openBookingModal('Коралові Рифи', 350)">
+                        <i class="fas fa-ticket-alt"></i> Замовити квиток
+                    </button>
+                </div>
+            </div>
+            <div class="exhibition-card">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="Глибоководний дайвер">
+                <div class="exhibition-info">
+                    <h3><i class="fas fa-water"></i> Таємниці Глибин</h3>
+                    <p>Таємничі створіння з найглибших частин океану. Унікальна фауна.</p>
+                    <div class="price">500 ₴</div>
+                    <button class="neon-btn" onclick="openBookingModal('Таємниці Глибин', 500)">
+                        <i class="fas fa-ticket-alt"></i> Замовити квиток
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeBookingModal()">&times;</span>
+        <h3>Замовлення квитка</h3>
+        <form id="bookingForm">
+            <input type="hidden" id="exhibitionName" name="exhibition">
+            <input type="hidden" id="exhibitionPrice" name="price">
+
+            <div class="form-group">
+                <label for="userName">Ваше ім'я:</label>
+                <input type="text" id="userName" name="name" placeholder="Введіть ваше ім'я" required>
+            </div>
+            <div class="form-group">
+                <label for="userPhone">Телефон:</label>
+                <input type="tel" id="userPhone" name="phone" placeholder="+380 XX XXX XX XX" required>
+            </div>
+            <div class="form-group">
+                <label for="userComment">Коментар (необов'язково):</label>
+                <textarea id="userComment" name="comment" placeholder="Додаткові побажання..."></textarea>
+            </div>
+            <button type="submit" class="neon-btn" style="width: 100%;">
+                Відправити замовлення
+            </button>
+        </form>
+    </div>
+</div>
+
+<section id="calculator">
+    <div class="container">
+        <h2>Калькулятор вартості</h2>
+        <div class="calculator-box">
+            <div class="control-group">
+                <label for="calcExhibition">Виберіть виставку:</label>
+                <select id="calcExhibition">
+                    <option value="450">Володарі Океану - 450 ₴</option>
+                    <option value="350">Коралові Рифи - 350 ₴</option>
+                    <option value="500">Таємниці Глибин - 500 ₴</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="calcDiscount">Виберіть пільгу:</label>
+                <select id="calcDiscount">
+                    <option value="0">Повна ціна</option>
+                    <option value="10">Студент -10%</option>
+                    <option value="15">Пенсіонер -15%</option>
+                    <option value="20">Діти -20%</option>
+                </select>
+            </div>
+            <button class="neon-btn" onclick="calculatePrice()" style="width: 100%; margin-top: 1rem;">
+                Розрахувати
+            </button>
+            <div id="calculatorResult" class="calculator-result hidden">
+                <div class="old-price" id="oldPrice"></div>
+                <div class="new-price" id="newPrice"></div>
+                <div class="discount-badge" id="discountBadge"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="quiz">
+    <div class="container">
+        <h2>Вікторина</h2>
+        <p class="quiz-subtitle">Відповідай правильно і отримай знижку</p>
+        <div class="quiz-box">
+            <div class="question" data-question="1" data-answer="Тихий">
+                <h3>1. Який океан найбільший?</h3>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Атлантичний')">Атлантичний</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Тихий')">Тихий</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Індійський')">Індійський</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Північний Льодовитий')">Північний Льодовитий</button>
+                </div>
+            </div>
+
+            <div class="question" data-question="2" data-answer="Три">
+                <h3>2. Скільки сердець у восьминога?</h3>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Одне')">Одне</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Два')">Два</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Три')">Три</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Чотири')">Чотири</button>
+                </div>
+            </div>
+
+            <div class="question" data-question="3" data-answer="Вітрильник">
+                <h3>3. Яка риба найшвидша?</h3>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Тунець')">Тунець</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Вітрильник')">Вітрильник</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Акула')">Акула</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Барракуда')">Барракуда</button>
+                </div>
+            </div>
+
+            <div class="question" data-question="4" data-answer="Ні">
+                <h3>4. Чи є у медуз мозок?</h3>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Так')">Так</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Ні')">Ні</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Тільки у деяких видів')">Тільки у деяких видів</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Мають простий мозок')">Мають простий мозок</button>
+                </div>
+            </div>
+
+            <div class="question" data-question="5" data-answer="Дельфін">
+                <h3>5. Хто спить з одним відкритим оком?</h3>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Акула')">Акула</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Дельфін')">Дельфін</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Восьминіг')">Восьминіг</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'Морж')">Морж</button>
+                </div>
+            </div>
+
+            <button class="neon-btn" onclick="checkQuizAnswers()" style="width: 100%; margin-top: 2rem;">
+                Перевірити відповіді
+            </button>
+
+            <div id="quizResult" class="quiz-result">
+                <h3 id="quizResultTitle"></h3>
+                <p id="quizResultMessage"></p>
+                <div class="promo-code" id="promoCode"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacts">
+    <div class="container">
+        <h2>Контакти</h2>
+        <div class="contacts-content">
+            <div class="contact-info">
+                <h3 style="color: var(--text-light); margin-bottom: 2rem;">
+                    Зв'яжіться з нами
+                </h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+380 (44) 123-45-67</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@deepocean.ua</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>м. Київ, вул. Океанська, 1</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Пн-Нд: 10:00 - 21:00</span>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 style="color: var(--text-light); margin-bottom: 2rem;">
+                    Зворотний зв'язок
+                </h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Ваше ім'я:</label>
+                        <input type="text" id="contactName" placeholder="Введіть ваше ім'я" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactQuestion">Ваше питання:</label>
+                        <textarea id="contactQuestion" placeholder="Напишіть ваше питання..." required></textarea>
+                    </div>
+                    <button type="submit" class="neon-btn" style="width: 100%;">
+                        Відправити
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Deep Ocean Океанаріум. Всі права захищені.</p>
+        <p style="margin-top: 0.5rem; color: var(--accent-primary);">
+            <i class="fas fa-heart"></i> З любов'ю до природи
+        </p>
+    </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+    // JS залишено без змін, оскільки він відповідає за логіку, а не стилі
+    // Але кольори за замовчуванням для медузи змінені в HTML для відповідності новому стилю
+
+    (function() {
+        console.log('EmailJS готовий до налаштування');
+    })();
+
+    function smoothScroll(target) {
+        document.querySelector(target).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+
+    // ==================== КОНСТРУКТОР МЕДУЗИ ====================
+    document.addEventListener("DOMContentLoaded", () => {
+        const svg = document.getElementById("jellyfishPreview");
+        const colorSelect = document.getElementById("color");
+        const shapeSelect = document.getElementById("shape");
+        const tentacleSelect = document.getElementById("tentacles");
+        const launchBtn = document.getElementById("launch");
+
+        // Функція малювання SVG
+        function drawJellyfish(svgEl, color, shape, tentacles) {
+            svgEl.innerHTML = "";
+
+            // Купол
+            const dome = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            dome.setAttribute("fill", color);
+            dome.setAttribute("fill-opacity", "0.85"); // Трохи прозорості
+
+            if (shape === "round")
+                dome.setAttribute("d", "M10,60 Q50,0 90,60 Z");
+            if (shape === "wavy")
+                dome.setAttribute("d", "M10,60 Q25,20 40,60 Q55,20 70,60 Q85,20 90,60 Z");
+            if (shape === "spiky")
+                dome.setAttribute("d", "M10,60 Q25,10 40,60 Q50,10 60,60 Q75,10 90,60 Z");
+
+            svgEl.appendChild(dome);
+
+            // Щупальця
+            for (let i = 0; i < 5; i++) {
+                const t = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                t.setAttribute("stroke", color);
+                t.setAttribute("stroke-width", "2");
+                t.setAttribute("fill", "none");
+
+                const x = 20 + i * 15;
+                if (tentacles === "short") t.setAttribute("d", `M${x},60 Q${x + 5},90 ${x},100`);
+                if (tentacles === "long") t.setAttribute("d", `M${x},60 Q${x + 10},100 ${x},120`);
+                if (tentacles === "curvy") t.setAttribute("d", `M${x},60 Q${x + 10},80 ${x},100 Q${x - 10},120 ${x},140`);
+
+                svgEl.appendChild(t);
+            }
+        }
+
+        // Оновлення прев'ю
+        function updatePreview() {
+            drawJellyfish(svg, colorSelect.value, shapeSelect.value, tentacleSelect.value);
+        }
+
+        [colorSelect, shapeSelect, tentacleSelect].forEach(el =>
+            el.addEventListener("change", updatePreview)
+        );
+
+        updatePreview();
+
+        // Логіка запуску та анімації
+        launchBtn.addEventListener("click", () => {
+            const floating = svg.cloneNode(true);
+            floating.removeAttribute("id");
+            floating.classList.add("floating-jellyfish");
+            document.body.appendChild(floating);
+
+            const rect = svg.getBoundingClientRect();
+
+            // Позиціонування
+            floating.style.position = "fixed";
+            floating.style.left = "0px";
+            floating.style.top = "0px";
+            floating.style.width = rect.width + "px";
+            floating.style.height = rect.height + "px";
+
+            // Початкові координати та напрямок
+            let posX = rect.left;
+            let posY = rect.top;
+            let dirX = (Math.random() * 2 - 1) * 2;
+            let dirY = (Math.random() * 2 - 1) * 2;
+
+            const lifetime = 10000; // Час життя медузи (мс)
+            const fadeDuration = 2000;
+            const startTime = performance.now();
+
+            function move(time) {
+                posX += dirX;
+                posY += dirY;
+
+                // Відбивання від стінок
+                if (posX < 0 || posX > window.innerWidth - rect.width) dirX *= -1;
+                if (posY < 0 || posY > window.innerHeight - rect.height) dirY *= -1;
+
+                // Поворот головою вперед
+                const angle = Math.atan2(dirY, dirX) * (180 / Math.PI) + 90;
+                floating.style.transform = `translate(${posX}px, ${posY}px) rotate(${angle}deg)`;
+
+                // Зникнення
+                if (time - startTime > lifetime) {
+                    const elapsed = time - (startTime + lifetime);
+                    floating.style.opacity = 1 - elapsed / fadeDuration;
+                    if (elapsed >= fadeDuration) {
+                        floating.remove();
+                        return;
+                    }
+                }
+
+                requestAnimationFrame(move);
+            }
+
+            requestAnimationFrame(move);
+        });
+    });
+    // ==================== МОДАЛЬНЕ ВІКНО БРОНЮВАННЯ ====================
+    let currentExhibition = '';
+    let currentPrice = 0;
+
+    function openBookingModal(exhibition, price) {
+        currentExhibition = exhibition;
+        currentPrice = price;
+        document.getElementById('exhibitionName').value = exhibition;
+        document.getElementById('exhibitionPrice').value = price;
+        document.getElementById('bookingModal').style.display = 'block';
+    }
+
+    function closeBookingModal() {
+        document.getElementById('bookingModal').style.display = 'none';
+        document.getElementById('bookingForm').reset();
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('bookingModal');
+        if (event.target == modal) {
+            closeBookingModal();
+        }
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('userName').value;
+        const phone = document.getElementById('userPhone').value;
+
+        alert(`✅ Замовлення прийнято!\n\nВиставка: ${currentExhibition}\nЦіна: ${currentPrice} ₴\nІм'я: ${name}`);
+        closeBookingModal();
+    });
+
+    // ==================== КАЛЬКУЛЯТОР ====================
+    function calculatePrice() {
+        const basePrice = parseInt(document.getElementById('calcExhibition').value);
+        const discountPercent = parseInt(document.getElementById('calcDiscount').value);
+        const discountAmount = basePrice * (discountPercent / 100);
+        const finalPrice = basePrice - discountAmount;
+
+        document.getElementById('oldPrice').textContent = `${basePrice} ₴`;
+        document.getElementById('newPrice').textContent = `${finalPrice} ₴`;
+        document.getElementById('discountBadge').textContent = discountPercent > 0 ? `Знижка ${discountPercent}%` : 'Повна ціна';
+        document.getElementById('calculatorResult').classList.remove('hidden');
+    }
+
+    // ==================== КВІЗ ====================
+    let quizAnswers = {};
+
+    function selectAnswer(button, answer) {
+        const allButtons = button.parentElement.querySelectorAll('.answer-btn');
+        allButtons.forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+        const questionDiv = button.closest('.question');
+        const questionNum = questionDiv.dataset.question;
+        quizAnswers[questionNum] = answer;
+    }
+
+    function checkQuizAnswers() {
+        if (Object.keys(quizAnswers).length < 5) {
+            alert('⚠️ Будь ласка, дайте відповідь на всі питання!');
+            return;
+        }
+
+        const correctAnswers = {
+            '1': 'Тихий',
+            '2': 'Три',
+            '3': 'Вітрильник',
+            '4': 'Ні',
+            '5': 'Дельфін'
+        };
+
+        let correctCount = 0;
+        for (let q in correctAnswers) {
+            if (quizAnswers[q] === correctAnswers[q]) {
+                correctCount++;
+            }
+        }
+
+        const resultDiv = document.getElementById('quizResult');
+        const titleElement = document.getElementById('quizResultTitle');
+        const messageElement = document.getElementById('quizResultMessage');
+        const promoElement = document.getElementById('promoCode');
+
+        if (correctCount === 5) {
+            titleElement.innerHTML = 'Вітаємо! Ви виграли!';
+            messageElement.textContent = 'Всі відповіді правильні! Ось ваш промокод на знижку 20%:';
+            promoElement.textContent = 'OCEAN2025';
+            promoElement.style.display = 'block';
+        } else {
+            titleElement.innerHTML = 'Спробуйте ще раз';
+            messageElement.textContent = `Правильних відповідей: ${correctCount}/5.`;
+            promoElement.style.display = 'none';
+        }
+
+        resultDiv.classList.add('show');
+        setTimeout(() => {
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('contactName').value;
+        alert(`✅ Дякуємо, ${name}! Ваше питання отримано.`);
+        this.reset();
+    });
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Знаходимо всі відео з класом scroll-video
+        const videos = document.querySelectorAll('.scroll-video');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Якщо відео з'явилося на екрані
+                if (entry.isIntersecting) {
+                    entry.target.play();
+                } else {
+                    // Якщо відео зникло з екрану - ставимо паузу
+                    entry.target.pause();
+                }
+            });
+        }, { threshold: 0.5 }); // Спрацьовує, коли видно 50% відео
+
+        videos.forEach(video => {
+            observer.observe(video);
+        });
+    });
+
+</script>
 </body>
 </html>

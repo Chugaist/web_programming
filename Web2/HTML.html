@@ -38,6 +38,80 @@
             line-height: 1.6;
         }
 
+
+            /* ==================== СТИЛІ НАВІГАЦІЇ (HEADER) ==================== */
+
+        /* Фіксована шапка */
+        #main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Напівпрозорий темний фон з розмиттям */
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000; /* Забезпечує, що шапка завжди зверху */
+            padding: 1.25rem 0; /* Збільшуємо вертикальний відступ для "ширшої" шапки */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid var(--accent-primary); /* Неонова рамка */
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 95%; /* Збільшуємо ширину контейнера (було 90%) */
+            max-width: 1300px; /* Збільшуємо максимальну ширину (було 1200px) */
+            margin: 0 auto;
+        }
+
+        /* Логотип */
+        .logo {
+            color: var(--text-light);
+            font-size: 1.9rem; /* Трохи збільшимо логотип */
+            font-weight: bold;
+            /* Залишаємо світіння логотипу, як було */
+            text-shadow: 0 0 5px var(--accent-primary), 0 0 10px var(--accent-primary);
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo i {
+            color: var(--accent-primary);
+            margin-right: 0.5rem;
+            font-size: 1.6rem;
+        }
+
+        /* Посилання навігації */
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease; /* Прибираємо transition для text-shadow */
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        /* Ефект при наведенні (тільки зміна кольору) */
+        .nav-link:hover,
+        .nav-link:focus {
+            color: var(--accent-primary); /* Зміна кольору на акцентний */
+            text-shadow: none; /* Прибираємо світіння */
+        }
+
+        /* Додатковий відступ для контенту, щоб він не ховався під фіксованою шапкою */
+        #hero {
+            /* Збільшуємо відступ, щоб відповідати ширшій шапці */
+            padding-top: 7rem;
+        }
+
+
         h1, h2, h3 {
             font-family: 'Inter', sans-serif; /* Прибрано Orbitron */
             font-weight: 700;
@@ -96,25 +170,47 @@
 
         /* ==================== HERO СЕКЦІЯ ==================== */
         #hero {
-            min-height: 80vh;
+            position: relative;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* Потімнений фон для кращої читабельності */
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
-            url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=80') center/cover no-repeat;
-            background-attachment: scroll;
-            position: relative;
+            overflow: hidden;
         }
 
-        /* Прибрано ::before з анімацією pulse */
+        /* Відео на фоні */
+        #bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            filter: brightness(0.4); /* затемнення */
+        }
 
-        .hero-content {
+        /* Градієнт поверх відео */
+        #hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.40) 17.21%, rgba(102, 102, 102, 0.40) 100%);
             z-index: 2;
+        }
+
+        /* Контент */
+        .hero-content {
             position: relative;
+            z-index: 3; /* поверх відео і градієнта */
+            color: white;
             max-width: 800px;
         }
+
 
         .hero-content h1 {
             font-size: clamp(2.5rem, 6vw, 4rem);
@@ -622,6 +718,159 @@
             padding: 0.5rem;
             border-radius: 4px;
         }
+        /* ==================== ВІДГУКИ (Нове) ==================== */
+        #reviews {
+            background: var(--bg-dark);
+            overflow: hidden; /* Щоб відгуки не вилазили за межі */
+        }
+
+        #reviews h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .reviews-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            height: 500px; /* Висота видимого вікна відгуків */
+            overflow: hidden;
+            /* Градієнт зверху і знизу для плавного зникнення */
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+        }
+
+        .reviews-track {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            animation: scrollVertical 20s linear infinite;
+        }
+
+        /* Зупиняємо скрол при наведенні мишкою */
+        .reviews-wrapper:hover .reviews-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollVertical {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); } /* Рухаємося на 50%, бо ми продублюємо контент JS-ом */
+        }
+
+        .review-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .review-content h4 {
+            color: var(--accent-primary);
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .stars {
+            color: #fbbf24; /* Золотий колір для зірок */
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .add-review-btn-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        /* ==================== КАРТА (Нове) ==================== */
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            height: 400px;
+            position: relative;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(30%) contrast(1.2) brightness(0.8); /* Трохи затемнюємо карту під стиль сайту */
+            transition: filter 0.3s ease;
+        }
+
+        .map-container:hover iframe {
+            filter: none; /* При наведенні показуємо оригінальні кольори */
+        }
+
+        /* ==================== АДАПТИВНІСТЬ ==================== */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .about-content,
+            .contacts-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .constructor-content {
+                flex-direction: column;
+            }
+
+            .about-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+            }
+
+            .exhibitions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+                margin: 10% auto;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
         /* ==================== КОНТАКТИ ==================== */
         #contacts {
@@ -804,9 +1053,27 @@
     </style>
 </head>
 <body>
+<header id="main-header">
+    <div class="container nav-content">
+        <div class="logo">
+            <i class="fas fa-water"></i> Світ Глибин
+        </div>
+        <nav>
+            <a href="#hero" class="nav-link">Головна</a>
+            <a href="#about" class="nav-link">Про нас</a>
+            <a href="#exhibitions" class="nav-link">Виставки</a>
+            <a href="#quiz" class="nav-link">Вікторина</a>
+            <a href="#contacts" class="nav-link">Контакти</a>
+        </nav>
+    </div>
+</header>
 
 <section id="hero">
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="background.mp4" type="video/mp4">
+    </video>
     <div class="hero-content">
+
         <h1>Світ Глибин</h1>
         <p>Місце, де оживають легенди океану</p>
         <button class="neon-btn" onclick="smoothScroll('#about')">
@@ -880,7 +1147,7 @@
         <div class="video-card">
             <div class="video-wrapper">
                 <video loop muted playsinline class="scroll-video">
-                    <source src=video3.MP4" type="video/mp4">
+                    <source src="video1.MP4" type="video/mp4">
                     Ваш браузер не підтримує відео.
                 </video>
             </div>
@@ -889,6 +1156,7 @@
                 <p>Зустріч з тими, хто живе у вічній темряві. Унікальні кадри глибоководних хижаків.</p>
             </div>
         </div>
+
 
     </div>
 </section>
@@ -1110,6 +1378,84 @@
     </div>
 </section>
 
+<section id="reviews">
+    <div class="container">
+        <h2>Що кажуть відвідувачі</h2>
+
+        <div class="reviews-wrapper">
+            <div class="reviews-track" id="reviewsTrack">
+                <div class="review-card">
+                    <div class="review-avatar"><i class="fas fa-user"></i></div>
+                    <div class="review-content">
+                        <h4>Олена Петрівна</h4>
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Неймовірні враження! Тунель з акулами просто захоплює подих. Діти в захваті від медуз."</p>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-avatar"><i class="fas fa-user-astronaut"></i></div>
+                    <div class="review-content">
+                        <h4>Максим Д.</h4>
+                        <div class="stars">★★★★☆</div>
+                        <p class="review-text">"Дуже атмосферне місце. Сподобалась зона з біолюмінесценцією. Ціни адекватні."</p>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-avatar"><i class="fas fa-child"></i></div>
+                    <div class="review-content">
+                        <h4>Анна та Ігор</h4>
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Святкували день народження сина. Екскурсоводи — професіонали своєї справи!"</p>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-avatar"><i class="fas fa-camera"></i></div>
+                    <div class="review-content">
+                        <h4>Фотограф Влад</h4>
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Світло виставлено ідеально для зйомки. Медузи виглядають як космос."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-review-btn-container">
+            <button class="neon-btn" onclick="openReviewModal()">
+                <i class="fas fa-pen"></i> Залишити відгук
+            </button>
+        </div>
+    </div>
+</section>
+
+<div id="reviewModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeReviewModal()">&times;</span>
+        <h3>Ваш відгук</h3>
+        <form id="reviewForm">
+            <div class="form-group">
+                <label>Ваше ім'я:</label>
+                <input type="text" id="reviewName" required placeholder="Як вас звати?">
+            </div>
+            <div class="form-group">
+                <label>Оцінка:</label>
+                <select id="reviewRating">
+                    <option value="5">★★★★★ (Відмінно)</option>
+                    <option value="4">★★★★☆ (Добре)</option>
+                    <option value="3">★★★☆☆ (Нормально)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Коментар:</label>
+                <textarea id="reviewText" required placeholder="Що вам сподобалось найбільше?"></textarea>
+            </div>
+            <button type="submit" class="neon-btn" style="width: 100%;">Опублікувати</button>
+        </form>
+    </div>
+</div>
+
 <section id="contacts">
     <div class="container">
         <h2>Контакти</h2>
@@ -1153,6 +1499,17 @@
                     </button>
                 </form>
             </div>
+        </div>
+        <div class="map-container">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.463695270384!2d30.519787676906233!3d50.41352887158498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf3af97c603b%3A0x6513e4b3383021!2sOcean%20Plaza!5e0!3m2!1suk!2sua!4v1701795000000!5m2!1suk!2sua"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </div>
 </section>
@@ -1437,6 +1794,73 @@
         videos.forEach(video => {
             observer.observe(video);
         });
+    });
+
+    // ==================== ВІДГУКИ ====================
+
+    // 1. Логіка безкінечного скролу (дублювання контенту)
+    document.addEventListener("DOMContentLoaded", () => {
+        const track = document.getElementById('reviewsTrack');
+        // Клонуємо контент, щоб створити ефект безшовності
+        const content = track.innerHTML;
+        track.innerHTML = content + content;
+    });
+
+    // 2. Логіка модального вікна відгуків
+    const reviewModal = document.getElementById('reviewModal');
+
+    function openReviewModal() {
+        reviewModal.style.display = 'block';
+    }
+
+    function closeReviewModal() {
+        reviewModal.style.display = 'none';
+        document.getElementById('reviewForm').reset();
+    }
+
+    // Закриття по кліку за межами
+    window.addEventListener('click', (e) => {
+        if (e.target === reviewModal) {
+            closeReviewModal();
+        }
+    });
+
+    // 3. Додавання нового відгуку
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('reviewName').value;
+        const text = document.getElementById('reviewText').value;
+        const ratingVal = document.getElementById('reviewRating').value;
+
+        // Генеруємо зірочки
+        let starsHtml = '';
+        for(let i=0; i<5; i++) {
+            starsHtml += i < ratingVal ? '★' : '☆';
+        }
+        // Створюємо HTML картки
+        const newReviewHTML = `
+            <div class="review-card" style="border-color: var(--accent-primary);">
+                <div class="review-avatar" style="background: var(--accent-primary);"><i class="fas fa-user-check"></i></div>
+                <div class="review-content">
+                    <h4>${name} <span style="font-size:0.8rem; color:var(--text-muted);">(Новий)</span></h4>
+                    <div class="stars">${starsHtml}</div>
+                    <p class="review-text">"${text}"</p>
+                </div>
+            </div>
+        `;
+
+        // Додаємо в обидві частини треку (оригінал і клон), щоб не ламати анімацію
+        // Примітка: для повноцінної роботи з клонами краще перезавантажувати трек,
+        // але для простого демо ми додамо на початок списку.
+        const track = document.getElementById('reviewsTrack');
+
+        // Щоб не ламати логіку дублювання, просто вставимо на початок.
+        // Користувач побачить відгук відразу зверху.
+        track.insertAdjacentHTML('afterbegin', newReviewHTML);
+
+        alert('✅ Дякуємо за ваш відгук! Він з\'явився у списку.');
+        closeReviewModal();
     });
 
 </script>
